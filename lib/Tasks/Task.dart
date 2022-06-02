@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 
-
-
 class Task {
   String _name, _state;
 
@@ -10,13 +8,11 @@ class Task {
   String get name => _name;
   String get state => _state;
 
-
-set name (String newName){
-  if (newName.length <= 255) {
-    this._name = newName:
+  set name(String newName) {
+    if (newName.length <= 255) {
+      this._name = newName;
+    }
   }
-}
 
-set state (String newState) => this._state = newState;
-
+  set state(String newState) => this._state = newState;
 }

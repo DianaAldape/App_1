@@ -1,6 +1,6 @@
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:flutter/material.dart';
-import 'Tasks.dart';
+import 'Tasks/Tasks.dart';
 import 'Calendario.dart';
 import 'Notes.dart';
 import '/Drawer/Settings.dart';
