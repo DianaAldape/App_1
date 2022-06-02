@@ -1,11 +1,13 @@
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:flutter/material.dart';
-import 'Tareas.dart';
+import 'Tasks.dart';
 import 'Calendario.dart';
-import 'Notas.dart';
+import 'Notes.dart';
+import '/Drawer/Settings.dart';
+import '/Drawer/Share.dart';
+import '/Drawer/Theme.dart';
 //import 'configuracion.dart'
 //import 'temas.dart'
-
 
 class MyApp extends StatefulWidget {
   @override
@@ -17,8 +19,8 @@ class _MyAppState extends State<MyApp> {
   int index = 0;
   final screens = [
     Calendario(),
-    Tareas(),
-    Notas(),
+    Tasks(),
+    Notes(),
   ];
 
   @override
@@ -64,20 +66,15 @@ class _MyAppState extends State<MyApp> {
 
   Widget _getDrawer(BuildContext context) {
     return Drawer(
-
       child: ListView(
         children: <Widget>[
           DrawerHeader(
             decoration: BoxDecoration(
-                gradient:
-                LinearGradient(
-                  begin: Alignment.topRight,
-                  end: Alignment.bottomLeft,
-                  colors:[
-                    Colors.red.shade100,
-                    Colors.blueAccent
-                  ],
-                ),
+              gradient: LinearGradient(
+                begin: Alignment.topRight,
+                end: Alignment.bottomLeft,
+                colors: [Colors.red.shade100, Colors.blueAccent],
+              ),
             ),
             child: Row(
               children: <Widget>[Text("App")],
@@ -88,20 +85,27 @@ class _MyAppState extends State<MyApp> {
               leading: Icon(Icons.home),
               onTap: () {
                 Navigator.pop(context);
-              }
-          ),
+              }),
           ListTile(
-            title: Text("Tema"),
-            leading: Icon(Icons.color_lens_outlined),
-            onTap: (){
-            }
-          ),
+              title: Text("Tema"),
+              leading: Icon(Icons.color_lens_outlined),
+              onTap: () {
+                Navigator.pop(context);
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => selectTheme()),
+                );
+              }),
           ListTile(
               title: Text("Compartir"),
               leading: Icon(Icons.share),
-              onTap: (){
-              }
-          ),
+              onTap: () {
+                Navigator.pop(context);
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => Share()),
+                );
+              }),
           ListTile(
             title: Text("Configuración"),
             leading: Icon(Icons.settings),
@@ -109,8 +113,7 @@ class _MyAppState extends State<MyApp> {
               Navigator.pop(context);
               Navigator.push(
                 context,
-                MaterialPageRoute(
-                  builder: (context) => Calendario()),
+                MaterialPageRoute(builder: (context) => Settings()),
               );
             },
           ),
