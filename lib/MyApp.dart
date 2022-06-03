@@ -1,11 +1,14 @@
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:flutter/material.dart';
-import 'Tasks/Tasks.dart';
 import 'Calendario.dart';
 import 'Notes.dart';
+import 'Tasks.dart';
 import '/Drawer/Settings.dart';
 import '/Drawer/Share.dart';
 import '/Drawer/Theme.dart';
+
+//import 'package:tasksList/Tasks.dart';
+
 //import 'configuracion.dart'
 //import 'temas.dart'
 
@@ -19,7 +22,8 @@ class _MyAppState extends State<MyApp> {
   int index = 0;
   final screens = [
     Calendario(),
-    Tasks(),
+    // ignore: prefer_const_constructors
+    TodoListPage(),
     Notes(),
   ];
 

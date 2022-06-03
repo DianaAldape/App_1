@@ -5,9 +5,9 @@ class taskCard extends StatelessWidget {
   final String state;
 
   taskCard({
-    Key key,
-    this.title,
-    this.state,
+    Key? key,
+    required this.title,
+    required this.state,
   }) : super(key: key);
 
   @override
