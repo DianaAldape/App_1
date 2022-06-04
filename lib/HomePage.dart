@@ -83,7 +83,7 @@ class _MyHomePageState extends State<HomePage> {
 
     return Scaffold(
       key: _scaffKey,
-      backgroundColor: Colors.white,
+      //backgroundColor: Colors.white,
       appBar: AppBar(
         title: const Text("Logo"),
         elevation: 0,
@@ -93,11 +93,12 @@ class _MyHomePageState extends State<HomePage> {
       body: screens[index],
       bottomNavigationBar: Theme(
         data: Theme.of(context).copyWith(
-          iconTheme: const IconThemeData(color: Colors.white),
-        ),
+            //iconTheme: const IconThemeData(color: Colors.white),
+            //iconTheme: const IconThemeData(),
+            ),
         child: CurvedNavigationBar(
           key: navigationKey,
-          color: Colors.blueAccent,
+          //color: Colors.blueAccent,
           backgroundColor: Colors.transparent,
           height: 60,
           animationCurve: Curves.easeInOut,

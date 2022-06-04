@@ -103,7 +103,7 @@ class _TodoListPageState extends State<TodoListPage> {
         child: ListTile(
           leading: Checkbox(
             checkColor: Colors.blueAccent,
-            activeColor: const Color.fromARGB(255, 208, 204, 204),
+            //activeColor: const Color.fromARGB(255, 208, 204, 204),
             value: _todos![index].done,
             //groupValue: _todos,
             onChanged: (checked) {
@@ -128,7 +128,7 @@ class _TodoListPageState extends State<TodoListPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
+      //backgroundColor: Colors.white,
       body: _buildList(),
       floatingActionButton: FloatingActionButton(
         child: const Icon(

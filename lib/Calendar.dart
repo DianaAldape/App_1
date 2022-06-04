@@ -29,7 +29,7 @@ class _CalendarState extends State<Calendar> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
+      //backgroundColor: Colors.white,
       body: //Text("Calendario"),
           SingleChildScrollView(
         child: Column(
@@ -51,7 +51,7 @@ class _CalendarState extends State<Calendar> {
         ),
       ),
       floatingActionButton: FloatingActionButton(
-        backgroundColor: Colors.blueAccent,
+        //backgroundColor: Colors.blueAccent,
         onPressed: _incrementCounter,
         tooltip: 'Increment',
         child: const Icon(
