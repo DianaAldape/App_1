@@ -1,8 +1,11 @@
-// ignore_for_file: deprecated_member_use
-
-import 'dart:ffi';
-
+// ignore: duplicate_ignore
+// ignore: file_names
+// ignore_for_file: deprecated_member_use, file_names
+import 'dart:convert';
+import 'dart:io';
+import 'package:path_provider/path_provider.dart';
 import 'package:flutter/material.dart';
+import 'dart:async';
 
 class Todo {
   String what;
@@ -31,61 +34,127 @@ class TodoListPage extends StatefulWidget {
 }
 
 class _TodoListPageState extends State<TodoListPage> {
-  late List<Todo> _todos;
+  List<Todo>? _todos;
 
   @override
   void initState() {
-    _todos = [
-      Todo('Primero'),
-      Todo('Segundo'),
-      Todo('Tercero'),
-    ];
+    _readTodos();
     super.initState();
+  }
+
+  _readTodos() async {
+    var directory = await getApplicationDocumentsDirectory();
+    Directory dir = directory;
+    File file = File('${dir.path}/todos.json');
+    List json = jsonDecode(await file.readAsString());
+    List<Todo> todos = [];
+    for (var item in json) {
+      todos.add(Todo.fromJson(item));
+    }
+    super.setState(() => _todos = todos);
+
+    await Future.delayed(Duration(seconds: 2));
+    setState(() {
+      _todos = [
+        Todo('Primero'),
+        Todo('Segundo'),
+        Todo('C'),
+      ];
+    });
+  }
+
+  @override
+  void setState(fn) {
+    super.setState(fn);
+    _writeTodos();
+  }
+
+  _writeTodos() async {
+    try {
+      var directory = await getApplicationDocumentsDirectory();
+      Directory dir = directory;
+      File file = File('${dir.path}/todos.json');
+      String jsonText = jsonEncode(_todos);
+      print(jsonText);
+      await file.writeAsString(jsonText);
+    } catch (e) {
+      Scaffold.of(context).showSnackBar(const SnackBar(
+        content: Text('No he podido grabar el fichero'),
+      ));
+    }
+  }
+
+  _removeChecked() {
+    List<Todo> pending = [];
+    for (var todo in _todos!) {
+      if (!todo.done) pending.add(todo);
+    }
+    setState(() => _todos = pending);
+  }
+
+  _buildList() {
+    // ignore: unnecessary_null_comparison
+    if (_todos == null) {
+      return const Center(
+        child: CircularProgressIndicator(),
+      );
+    }
+    return ListView.builder(
+      itemCount: _todos!.length,
+      itemBuilder: (context, index) => InkWell(
+        onTap: () {
+          setState(() {
+            _todos![index].toggleDone();
+          });
+        },
+        child: ListTile(
+          leading: Checkbox(
+            checkColor: Colors.blueAccent,
+            activeColor: const Color.fromARGB(255, 208, 204, 204),
+
+            value: _todos![index].done,
+            //groupValue: _todos,
+            onChanged: (checked) {
+              setState(() => _todos![index].done = checked!);
+            },
+          ),
+          title: Text(
+            _todos![index].what,
+            style: TextStyle(
+              //backgroundColor: Colors.red,
+              //decorationColor: Colors.red,
+              decoration: (_todos![index].done
+                  ? TextDecoration.lineThrough
+                  : TextDecoration.none),
+            ),
+          ),
+        ),
+      ),
+    );
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
-      body: ListView.builder(
-        itemCount: _todos.length,
-        itemBuilder: (context, index) => InkWell(
-          onTap: () {
-            setState(() {
-              _todos[index].toggleDone();
-            });
-          },
-          child: ListTile(
-            leading: Checkbox(
-              value: _todos[index].done,
-              onChanged: (checked) {
-                setState(() {
-                  _todos[index].done = checked!;
-                });
-              },
-            ),
-            title: Text(
-              _todos[index].what,
-              style: TextStyle(
-                decoration: (_todos[index].done
-                    ? TextDecoration.lineThrough
-                    : TextDecoration.none),
-              ),
-            ),
-          ),
-        ),
-      ),
+      body: _buildList(),
       floatingActionButton: FloatingActionButton(
         child: const Icon(
           Icons.add,
           //color: Colors.pink,
         ),
         onPressed: () {
-          Navigator.of(context).push(
+          Navigator.of(context)
+              .push(
             MaterialPageRoute(
               builder: (_) => NewTodoPage(),
             ),
-          );
+          )
+              .then((what) {
+            setState(() {
+              _todos!.add(Todo(what));
+            });
+          });
         },
       ),
     );
