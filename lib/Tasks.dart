@@ -5,7 +5,6 @@ import 'dart:convert';
 import 'dart:io';
 import 'package:path_provider/path_provider.dart';
 import 'package:flutter/material.dart';
-import 'dart:async';
 
 class Todo {
   String what;
@@ -43,24 +42,18 @@ class _TodoListPageState extends State<TodoListPage> {
   }
 
   _readTodos() async {
-    var directory = await getApplicationDocumentsDirectory();
-    Directory dir = directory;
-    File file = File('${dir.path}/todos.json');
-    List json = jsonDecode(await file.readAsString());
-    List<Todo> todos = [];
-    for (var item in json) {
-      todos.add(Todo.fromJson(item));
+    try {
+      Directory dir = await getApplicationDocumentsDirectory();
+      File file = File('${dir.path}/todos.json');
+      List json = jsonDecode(await file.readAsString());
+      List<Todo> todos = [];
+      for (var item in json) {
+        todos.add(Todo.fromJson(item));
+      }
+      super.setState(() => _todos = todos);
+    } catch (e) {
+      setState(() => _todos = []);
     }
-    super.setState(() => _todos = todos);
-
-    await Future.delayed(Duration(seconds: 2));
-    setState(() {
-      _todos = [
-        Todo('Primero'),
-        Todo('Segundo'),
-        Todo('C'),
-      ];
-    });
   }
 
   @override
@@ -111,7 +104,6 @@ class _TodoListPageState extends State<TodoListPage> {
           leading: Checkbox(
             checkColor: Colors.blueAccent,
             activeColor: const Color.fromARGB(255, 208, 204, 204),
-
             value: _todos![index].done,
             //groupValue: _todos,
             onChanged: (checked) {

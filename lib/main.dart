@@ -1,7 +1,30 @@
 import 'package:flutter/material.dart';
-import 'MyApp.dart';
-import 'package:path_provider/path_provider.dart';
+import 'package:provider/provider.dart';
+import 'Drawer/Theme.dart';
+import 'HomePage.dart';
 
-void main() {
-  runApp(MaterialApp(debugShowCheckedModeBanner: false, home: MyApp()));
+//void main() {
+//runApp(MaterialApp(debugShowCheckedModeBanner: false, home: MyApp()));
+
+//}
+
+void main() => runApp(MyApp());
+
+class MyApp extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return ChangeNotifierProvider(
+      // ignore: unused_label
+      create: (_) => ThemeChanger(ThemeData.dark()),
+      child: MaterialAppWithTheme(),
+    );
+  }
+}
+
+class MaterialAppWithTheme extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    final theme = Provider.of<ThemeChanger>(context);
+    return MaterialApp(theme: theme.getTheme(), home: const HomePage());
+  }
 }

@@ -2,12 +2,12 @@ import 'package:syncfusion_flutter_calendar/calendar.dart';
 import 'package:table_calendar/table_calendar.dart';
 import 'package:flutter/material.dart';
 
-class Calendario extends StatefulWidget {
+class Calendar extends StatefulWidget {
   @override
-  State<Calendario> createState() => _CalendarioState();
+  State<Calendar> createState() => _CalendarState();
 }
 
-class _CalendarioState extends State<Calendario> {
+class _CalendarState extends State<Calendar> {
   CalendarFormat format = CalendarFormat.month;
   DateTime selectedDay = DateTime.now();
   DateTime focusedDay = DateTime.now();
@@ -31,35 +31,33 @@ class _CalendarioState extends State<Calendario> {
     return Scaffold(
       backgroundColor: Colors.white,
       body: //Text("Calendario"),
-        SingleChildScrollView(
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-              children: <Widget>[
-                TableCalendar(
-                  //calendarController: _controller,
-                  focusedDay: DateTime.now(),
-                  firstDay: DateTime(1990),
-                  lastDay: DateTime(2050),
-                  calendarFormat: format,
-                  onFormatChanged: (CalendarFormat _format){
-                    setState(() {
-                      format = _format;
-                    }
-                    );
-                  },
-                ),
-              ],
-          ),
+          SingleChildScrollView(
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: <Widget>[
+            TableCalendar(
+              //calendarController: _controller,
+              focusedDay: DateTime.now(),
+              firstDay: DateTime(1990),
+              lastDay: DateTime(2050),
+              calendarFormat: format,
+              onFormatChanged: (CalendarFormat _format) {
+                setState(() {
+                  format = _format;
+                });
+              },
+            ),
+          ],
         ),
+      ),
       floatingActionButton: FloatingActionButton(
-        backgroundColor : Colors.blueAccent,
+        backgroundColor: Colors.blueAccent,
         onPressed: _incrementCounter,
         tooltip: 'Increment',
-        child: const Icon(Icons.add,),
+        child: const Icon(
+          Icons.add,
+        ),
       ),
     );
   }
 }
-
-
-
