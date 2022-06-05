@@ -1,17 +1,17 @@
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
-import 'package:flutter/animation.dart';
-import 'package:hidden_drawer_menu/hidden_drawer_menu.dart';
+//import 'package:hidden_drawer_menu/hidden_drawer_menu.dart';
 import 'package:toggle_switch/toggle_switch.dart';
-
+import 'Drawer/Themes.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:prueba2/Drawer/Theme.dart';
+import 'package:prueba2/Drawer/selectTheme.dart';
 import 'Calendar.dart';
 import 'Notes.dart';
+import 'Models/note.dart';
 import 'Tasks.dart';
 import '/Drawer/Settings.dart';
 import '/Drawer/Share.dart';
-import '/Drawer/Theme.dart';
+import 'Drawer/selectTheme.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -21,8 +21,6 @@ class HomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<HomePage> {
-  //List<ScreenHiddenDrawer> itens = [];
-
   final navigationKey = GlobalKey<CurvedNavigationBarState>();
   int index = 0;
   bool selected = false;
@@ -31,44 +29,6 @@ class _MyHomePageState extends State<HomePage> {
     const TodoListPage(),
     Notes(),
   ];
-/*  --------------------HIDDEN DRAWER MENU------------------------
-  @override
-  void initState() {
-    //var selectedStyle2 = null;
-    // ignore: unnecessary_new, avoid_init_to_null
-    itens.add(ScreenHiddenDrawer(
-        // ignore: unnecessary_new
-        new ItemHiddenMenu(
-          name: "Inicio",
-          baseStyle:
-              TextStyle(color: Colors.white.withOpacity(0.8), fontSize: 28.0),
-          colorLineSelected: Colors.teal,
-          selectedStyle: TextStyle(color: Colors.white),
-          onTap: () {
-            Navigator.pop(context);
-          },
-          //selectedStyle: selectedStyle2,
-        ),
-        Calendar()));
-
-    //var selectedStyle3 = null;
-    // ignore: unnecessary_new
-    itens.add(ScreenHiddenDrawer(
-        // ignore: unnecessary_new
-        new ItemHiddenMenu(
-          name: "Configuración",
-          selected: true,
-          baseStyle:
-              TextStyle(color: Colors.white.withOpacity(0.8), fontSize: 28.0),
-          colorLineSelected: Colors.orange,
-          selectedStyle: TextStyle(color: Colors.white),
-          //selectedStyle: selectedStyle3,
-        ),
-        TodoListPage()));
-
-    super.initState();
-  }
-  */
 
   @override
   Widget build(BuildContext context) {
@@ -81,17 +41,14 @@ class _MyHomePageState extends State<HomePage> {
       const Icon(Icons.calendar_month_outlined, size: 30),
       const Icon(Icons.task_outlined, size: 30),
       const Icon(Icons.article_outlined, size: 30),
-      // Icon(Icons.favorite,settings, person , size: 30),
     ];
 
     return Scaffold(
       key: _scaffKey,
-      //backgroundColor: Colors.white,
       appBar: AppBar(
         title: const Text("Logo"),
         elevation: 0,
         centerTitle: true,
-        //backgroundColor: Colors.blueAccent,
       ),
       body: screens[index],
       bottomNavigationBar: Theme(
@@ -102,7 +59,6 @@ class _MyHomePageState extends State<HomePage> {
         child: CurvedNavigationBar(
           key: navigationKey,
           color: Color.fromARGB(33, 112, 113, 113),
-          //buttonBackgroundColor: Colors.red,
           backgroundColor: Colors.transparent,
           height: 70,
           animationCurve: Curves.easeInCirc,
@@ -113,6 +69,7 @@ class _MyHomePageState extends State<HomePage> {
         ),
       ),
       drawer: _getDrawer(context),
+
       //HiddenDrawerMenu(
       //backgroundColorMenu: Colors.grey,
       //screens: itens,
@@ -121,8 +78,7 @@ class _MyHomePageState extends State<HomePage> {
 
   Widget _getDrawer(BuildContext context) {
     final theme = Provider.of<ThemeChanger>(context);
-    bool _switchValue = false;
-    bool prueba = true;
+
     return Drawer(
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(20),
@@ -130,15 +86,12 @@ class _MyHomePageState extends State<HomePage> {
       child: ListView(
         children: <Widget>[
           DrawerHeader(
-            //curve: Curves.slowMiddle,
             margin: EdgeInsets.zero,
             decoration: const BoxDecoration(
               shape: BoxShape.rectangle,
               image: DecorationImage(
                 image: AssetImage("assets/images/op5.jpg"),
                 fit: BoxFit.cover,
-                //opacity: 70.0,
-                //scale: 30.0,
               ),
             ),
             child: Row(
@@ -151,8 +104,6 @@ class _MyHomePageState extends State<HomePage> {
             //width: 20,
             //color: Color.fromARGB(42, 10, 10, 10),
             child: Column(
-              //crossAxisAlignment: CrossAxisAlignment.start,
-              //mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: <Widget>[
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -165,17 +116,20 @@ class _MyHomePageState extends State<HomePage> {
                       initialLabelIndex: 1,
                       totalSwitches: 2,
                       customIcons: const [
-                        Icon(Icons.nightlight),
                         Icon(Icons.light_mode),
+                        Icon(Icons.nightlight),
                       ],
                       radiusStyle: true,
                       onToggle: (index) {
-                        if (index == 1) {
+                        if (index == 0) {
                           print(index);
-                          theme.setTheme(ThemeData.dark());
+                          index = 0;
+                          //cambiarTema = 1;
+                          //Future.delayed(const Duration(milliseconds: 500));
+                          //theme.setTheme(ThemeData.dark());
                         } else {
-                          print("Hola");
-                          //theme.setTheme(ThemeData.light());
+                          print(index);
+                          //theme.setTheme(ThemeData.dark());
                         }
                       },
                     ),

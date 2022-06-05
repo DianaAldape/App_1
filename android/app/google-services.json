@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "866034062565",
+    "project_id": "agenda-403b3",
+    "storage_bucket": "agenda-403b3.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:866034062565:android:a720c8c4f936e98aaff00c",
+        "android_client_info": {
+          "package_name": "com.example.prueba2"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "866034062565-v9to6adhrs13grf7uacbe7pt01htld17.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAJteDZ1Z7qtiBlAJt5zCEarYhScG6Ktco"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "866034062565-v9to6adhrs13grf7uacbe7pt01htld17.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
