@@ -135,9 +135,9 @@ class _MyHomePageState extends State<HomePage> {
             decoration: const BoxDecoration(
               shape: BoxShape.rectangle,
               image: DecorationImage(
-                image: AssetImage("images/op5.jpg"),
+                image: AssetImage("assets/images/op5.jpg"),
                 fit: BoxFit.cover,
-                //xopacity: 70.0,
+                //opacity: 70.0,
                 //scale: 30.0,
               ),
             ),

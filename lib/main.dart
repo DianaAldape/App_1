@@ -25,6 +25,9 @@ class MaterialAppWithTheme extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final theme = Provider.of<ThemeChanger>(context);
-    return MaterialApp(theme: theme.getTheme(), home: const HomePage());
+    return MaterialApp(
+        debugShowCheckedModeBanner: false,
+        theme: theme.getTheme(),
+        home: const HomePage());
   }
 }
