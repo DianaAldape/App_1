@@ -1,5 +1,8 @@
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
+import 'package:flutter/animation.dart';
 import 'package:hidden_drawer_menu/hidden_drawer_menu.dart';
+import 'package:toggle_switch/toggle_switch.dart';
+
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:prueba2/Drawer/Theme.dart';
@@ -98,11 +101,12 @@ class _MyHomePageState extends State<HomePage> {
             ),
         child: CurvedNavigationBar(
           key: navigationKey,
-          //color: Colors.blueAccent,
+          color: Color.fromARGB(33, 112, 113, 113),
+          //buttonBackgroundColor: Colors.red,
           backgroundColor: Colors.transparent,
-          height: 60,
-          animationCurve: Curves.easeInOut,
-          animationDuration: const Duration(milliseconds: 300),
+          height: 70,
+          animationCurve: Curves.easeInCirc,
+          animationDuration: const Duration(milliseconds: 1200),
           index: index,
           items: items,
           onTap: (index) => setState(() => this.index = index),
@@ -117,40 +121,97 @@ class _MyHomePageState extends State<HomePage> {
 
   Widget _getDrawer(BuildContext context) {
     final theme = Provider.of<ThemeChanger>(context);
-    bool switchValue = false;
-
+    bool _switchValue = false;
+    bool prueba = true;
     return Drawer(
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(20),
+      ),
       child: ListView(
         children: <Widget>[
           DrawerHeader(
-            decoration: BoxDecoration(
-              gradient: LinearGradient(
-                begin: Alignment.topRight,
-                end: Alignment.bottomLeft,
-                colors: [Colors.red.shade100, Colors.blueAccent],
+            //curve: Curves.slowMiddle,
+            margin: EdgeInsets.zero,
+            decoration: const BoxDecoration(
+              shape: BoxShape.rectangle,
+              image: DecorationImage(
+                image: AssetImage("images/op5.jpg"),
+                fit: BoxFit.cover,
+                //xopacity: 70.0,
+                //scale: 30.0,
               ),
             ),
             child: Row(
               children: const <Widget>[Text("App")],
             ),
           ),
-          SwitchListTile(
+          Container(
+            margin: EdgeInsets.all(10),
+            height: 50,
+            //width: 20,
+            //color: Color.fromARGB(42, 10, 10, 10),
+            child: Column(
+              //crossAxisAlignment: CrossAxisAlignment.start,
+              //mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: <Widget>[
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: <Widget>[
+                    const Text("Modo oscuro"),
+                    ToggleSwitch(
+                      minWidth: 50.0,
+                      cornerRadius: 28.0,
+                      initialLabelIndex: 1,
+                      totalSwitches: 2,
+                      customIcons: const [
+                        Icon(Icons.nightlight),
+                        Icon(Icons.light_mode),
+                      ],
+                      radiusStyle: true,
+                      onToggle: (index) {
+                        if (index == 1) {
+                          print(index);
+                          theme.setTheme(ThemeData.dark());
+                        } else {
+                          print("Hola");
+                          //theme.setTheme(ThemeData.light());
+                        }
+                      },
+                    ),
+                  ],
+                ),
+              ],
+            ),
+          ),
+          const Divider(
+            color: Color.fromARGB(42, 10, 10, 10),
+            height: 5,
+            thickness: 5,
+            indent: 20,
+            endIndent: 20,
+          ),
+          /*SwitchListTile(
             title: const Text("Modo Oscuro"),
-            value: switchValue,
+            value: _switchValue,
             onChanged: (bool valueIn) {
               setState(() {
-                switchValue = valueIn;
+                _switchValue = valueIn;
               });
-              //theme.setTheme(ThemeData.light());
+              theme.setTheme(ThemeData.light());
             },
             secondary: const Icon(Icons.nightlight),
-          ),
+          ),*/
           ListTile(
               title: const Text("Inicio"),
               leading: const Icon(Icons.home),
               onTap: () {
                 Navigator.pop(context);
               }),
+          ListTile(
+              title: const Text("Otro"),
+              leading: const Icon(Icons.home),
+              onTap: () {}),
           ListTile(
               title: const Text("Tema"),
               leading: const Icon(Icons.color_lens_outlined),
