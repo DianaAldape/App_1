@@ -43,6 +43,7 @@ class _NewTodoPageState extends State<NewTodoPage>
                     child: Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 12),
                       child: TextField(
+                        
                         keyboardType: TextInputType.text,
                         controller: _controller,
                         onChanged: (text) => setState(() {}),
