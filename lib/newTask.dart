@@ -28,10 +28,12 @@ class _NewTodoPageState extends State<NewTodoPage>
     _controller.dispose();
   }
 
+  final GlobalKey<FormState> _formularioKey = GlobalKey<FormState>();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(title: const Text("Nueva tarea")),
+        appBar: AppBar(),
         body: Padding(
           padding: const EdgeInsets.all(16.0),
           child: Column(
@@ -41,27 +43,39 @@ class _NewTodoPageState extends State<NewTodoPage>
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Flexible(
-                    child: Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 12),
-                      child: TextField(
-                        keyboardType: TextInputType.text,
-                        controller: _controller,
-                        onChanged: (text) => setState(() {}),
-                        onSubmitted: (what) {
-                          Navigator.of(context).pop(what);
-                          Navigator.of(context).pop(DateTime.now());
-                        },
-                        decoration: const InputDecoration(hintText: 'Título'),
+                    child: Form(
+                      key: _formularioKey,
+                      child: Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 12),
+                        child: TextFormField(
+                          //maxLines: 10,
+                          validator: (String? dato) {
+                            if (dato!.isEmpty) {
+                              return 'Este campo es requerido';
+                            }
+                          },
+                          keyboardType: TextInputType.text,
+                          textCapitalization: TextCapitalization.sentences,
+                          controller: _controller,
+                          onChanged: (text) => setState(() {}),
+                          onFieldSubmitted: (what) {
+                            Navigator.of(context).pop(what);
+                            Navigator.of(context).pop(DateTime.now());
+                          },
+                          decoration:
+                              const InputDecoration(hintText: 'Nueva tarea'),
+                        ),
                       ),
                     ),
                   ),
                   IconButton(
-                    iconSize: 40,
-                    icon: Icon(CupertinoIcons.arrow_right_circle),
-                    onPressed: () {
-                      Navigator.of(context).pop(_controller.text);
-                    },
-                  )
+                      iconSize: 40,
+                      icon: Icon(CupertinoIcons.arrow_right_circle),
+                      onPressed: () {
+                        if (_formularioKey.currentState!.validate()) {
+                          Navigator.of(context).pop(_controller.text);
+                        }
+                      }),
                 ],
               ),
             ],
