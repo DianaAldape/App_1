@@ -3,6 +3,8 @@
 // ignore_for_file: deprecated_member_use, file_names
 import 'dart:convert';
 import 'dart:io';
+import 'package:flutter/cupertino.dart';
+import 'package:flutter_speed_dial/flutter_speed_dial.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
@@ -84,14 +86,6 @@ class _TodoListPageState extends State<TodoListPage> {
     }
   }
 
-  _removeChecked() {
-    List<Todo> pending = [];
-    for (var todo in _todos!) {
-      if (!todo.done) pending.add(todo);
-    }
-    setState(() => _todos = pending);
-  }
-
   _buildList() {
     // ignore: unnecessary_null_comparison
     if (_todos == null) {
@@ -139,29 +133,53 @@ class _TodoListPageState extends State<TodoListPage> {
     );
   }
 
+  _removeChecked() {
+    List<Todo> pending = [];
+    for (var todo in _todos!) {
+      if (!todo.done) pending.add(todo);
+    }
+    setState(() => _todos = pending);
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       //backgroundColor: Colors.white,
       body: _buildList(),
-      floatingActionButton: FloatingActionButton(
-        child: const Icon(
-          Icons.add,
-          //color: Colors.pink,
-        ),
-        onPressed: () {
-          Navigator.of(context)
-              .push(
-            MaterialPageRoute(
-              builder: (_) => NewTodoPage(),
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
+      floatingActionButton: Column(
+        //mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        //crossAxisAlignment: CrossAxisAlignment.start,
+        children: <Widget>[
+          FloatingActionButton(
+            onPressed: _removeChecked,
+            backgroundColor: Colors.transparent,
+            heroTag: null,
+            child: const Icon(CupertinoIcons.delete),
+          ),
+          const SizedBox(
+            height: 100,
+          ),
+          FloatingActionButton(
+            child: const Icon(
+              CupertinoIcons.add,
+              //color: Colors.pink,
             ),
-          )
-              .then((what) {
-            setState(() {
-              _todos!.add(Todo(what));
-            });
-          });
-        },
+            onPressed: () {
+              Navigator.of(context)
+                  .push(
+                MaterialPageRoute(
+                  builder: (_) => NewTodoPage(),
+                ),
+              )
+                  .then((what) {
+                setState(() {
+                  _todos!.add(Todo(what));
+                });
+              });
+            },
+          ),
+        ],
       ),
     );
   }

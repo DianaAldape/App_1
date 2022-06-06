@@ -1,16 +1,17 @@
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 //import 'package:hidden_drawer_menu/hidden_drawer_menu.dart';
 import 'package:toggle_switch/toggle_switch.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:prueba2/Drawer/selectTheme.dart';
 import 'Calendar.dart';
-import 'Notes.dart';
 import 'Tasks.dart';
 import '/Drawer/Settings.dart';
 import '/Drawer/Share.dart';
 import 'Drawer/selectTheme.dart';
 import 'package:flutter_speed_dial/flutter_speed_dial.dart';
+
+import 'models/newNote.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -26,7 +27,7 @@ class _MyHomePageState extends State<HomePage> {
   final screens = [
     Calendar(),
     const TodoListPage(),
-    Notes(),
+    NewNotePage(),
   ];
 
   @override
@@ -60,8 +61,8 @@ class _MyHomePageState extends State<HomePage> {
           color: Color.fromARGB(33, 112, 113, 113),
           backgroundColor: Colors.transparent,
           height: 70,
-          animationCurve: Curves.easeInCirc,
-          animationDuration: const Duration(milliseconds: 1200),
+          //animationCurve: Curves.easeInCirc,
+          //animationDuration: const Duration(milliseconds: 1200),
           index: index,
           items: items,
           onTap: (index) => setState(() => this.index = index),
@@ -73,7 +74,7 @@ class _MyHomePageState extends State<HomePage> {
         overlayOpacity: 0.4,
         spacing: 10,
         spaceBetweenChildren: 10,
-        closeManually: true,
+        //closeManually: true,
         children: [
           SpeedDialChild(
               child: Icon(Icons.note_add),
@@ -85,11 +86,16 @@ class _MyHomePageState extends State<HomePage> {
           SpeedDialChild(
             child: Icon(Icons.event),
             label: 'Calendario',
+            onTap: () => MaterialPageRoute(
+              builder: (_) => Calendar(),
+            ),
+            //Navigator.pop(context);
           ),
           SpeedDialChild(
               child: Icon(Icons.task),
               label: 'Tarea',
               onTap: () {
+                //showToast('Select tasks...'),
                 Navigator.pop(context);
                 Navigator.of(context).push(
                   MaterialPageRoute(
@@ -105,6 +111,11 @@ class _MyHomePageState extends State<HomePage> {
       //backgroundColorMenu: Colors.grey,
       //screens: itens,
     );
+  }
+
+  Future showToast(String message) async {
+    await Fluttertoast.cancel();
+    Fluttertoast.showToast(msg: message, fontSize: 18);
   }
 
   Widget _getDrawer(BuildContext context) {

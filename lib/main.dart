@@ -54,7 +54,7 @@ class MaterialAppWithTheme extends StatelessWidget {
       theme: theme.getTheme(),
       routes: {
         '/': (_) => HomePage(),
-        'nuevo': (_) => const ModalNewNote(),
+        'nuevo': (_) => NewNotePage(),
       },
       initialRoute: '/',
     );
