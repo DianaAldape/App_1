@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:prueba2/models/newNote.dart';
+import 'package:prueba2/services/appState.dart';
 import 'Drawer/selectTheme.dart';
 import 'HomePage.dart';
 
@@ -20,14 +22,41 @@ class MyApp extends StatelessWidget {
     );
   }
 }
+/*
+class MaterialAppWithTheme extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    final theme = Provider.of<ThemeChanger>(context);
+    return ChangeNotifierProvider(
+      create: (BuildContext (context) => AppState()),
+      child: MaterialApp(
+        debugShowCheckedModeBanner: false,
+        theme: theme.getTheme(),
+        routes: {
+          '/': (_) => HomePage(),
+          'nuevo': (_) => const ModalNewNote(),
+        },
+        initialRoute: '/',
+      ),
+    );
+  }
+}
+*/
+
+//Clase original
 
 class MaterialAppWithTheme extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final theme = Provider.of<ThemeChanger>(context);
     return MaterialApp(
-        debugShowCheckedModeBanner: false,
-        theme: theme.getTheme(),
-        home: const HomePage());
+      debugShowCheckedModeBanner: false,
+      theme: theme.getTheme(),
+      routes: {
+        '/': (_) => HomePage(),
+        'nuevo': (_) => const ModalNewNote(),
+      },
+      initialRoute: '/',
+    );
   }
 }

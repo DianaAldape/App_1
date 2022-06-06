@@ -1,17 +1,16 @@
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 //import 'package:hidden_drawer_menu/hidden_drawer_menu.dart';
 import 'package:toggle_switch/toggle_switch.dart';
-import 'Drawer/Themes.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:prueba2/Drawer/selectTheme.dart';
 import 'Calendar.dart';
 import 'Notes.dart';
-import 'Models/note.dart';
 import 'Tasks.dart';
 import '/Drawer/Settings.dart';
 import '/Drawer/Share.dart';
 import 'Drawer/selectTheme.dart';
+import 'package:flutter_speed_dial/flutter_speed_dial.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -47,7 +46,7 @@ class _MyHomePageState extends State<HomePage> {
       key: _scaffKey,
       appBar: AppBar(
         title: const Text("Logo"),
-        elevation: 0,
+        elevation: 10,
         centerTitle: true,
       ),
       body: screens[index],
@@ -67,6 +66,38 @@ class _MyHomePageState extends State<HomePage> {
           items: items,
           onTap: (index) => setState(() => this.index = index),
         ),
+      ),
+      floatingActionButton: SpeedDial(
+        animatedIcon: AnimatedIcons.menu_close,
+        overlayColor: Colors.black,
+        overlayOpacity: 0.4,
+        spacing: 10,
+        spaceBetweenChildren: 10,
+        closeManually: true,
+        children: [
+          SpeedDialChild(
+              child: Icon(Icons.note_add),
+              label: 'Nota',
+              onTap: () {
+                Navigator.pop(context);
+                Navigator.pushNamed(context, 'nuevo');
+              }),
+          SpeedDialChild(
+            child: Icon(Icons.event),
+            label: 'Calendario',
+          ),
+          SpeedDialChild(
+              child: Icon(Icons.task),
+              label: 'Tarea',
+              onTap: () {
+                Navigator.pop(context);
+                Navigator.of(context).push(
+                  MaterialPageRoute(
+                    builder: (_) => NewTodoPage(),
+                  ),
+                );
+              }),
+        ],
       ),
       drawer: _getDrawer(context),
 

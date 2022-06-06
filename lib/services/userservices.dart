@@ -1,5 +1,6 @@
 import 'package:firebase_database/firebase_database.dart';
 import 'package:firebase_core/firebase_core.dart';
+//import 'package:cloud_firestore/cloud_firestore.dart';
 
 import '../Models/note.dart';
 //
@@ -7,11 +8,35 @@ import '../Models/note.dart';
 
 class UserServices {
   Future<List<Note>> getNotes() async {
-    List<Note> myNotes = [
-      Note(titulo: 'Titulo 1', contenido: 'Hola'),
-      Note(titulo: 'Titulo 2', contenido: 'Como'),
-      Note(titulo: 'Titulo 3', contenido: 'Estas'),
-    ];
+    List<Note> myNotes = [];
+
+    /*
+    try {
+      DataSnapshot snap = (await FirebaseDatabase.instance
+          .reference()
+          .child('notas')
+          .once()) as DataSnapshot;
+          
+      if (snap.exists) {
+        final size = snap.value!.lenght;
+        for (var i = 0; i < size!; i++) {
+          
+        }
+        snap.value.forEach((value) {
+          Map mapa = {'key': key, ...value};
+          Note newNote = Note(
+            contenido: mapa['body'],
+            key: mapa['key'],
+            titulo: mapa['title'],
+          );
+          myNotes.add(newNote);
+        });
+        
+      }
+    } catch (e) {
+      return myNotes;
+    }
+*/
     return myNotes;
   }
 
