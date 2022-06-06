@@ -12,18 +12,18 @@ import 'newTask.dart';
 class Todo {
   String what;
   bool done;
-  DateTime fecha;
+  //DateTime fecha;
 
-  Todo(this.what, this.fecha) : done = false;
+  Todo(this.what) : done = false;
 
   Todo.fromJson(Map<String, dynamic> json)
       : what = json['what'],
-        fecha = DateTime.parse(json['fecha'] as String),
+        //fecha = DateTime.parse(json['fecha'] as String),
         done = json['done'];
 
   Map<String, dynamic> toJson() => {
         'what': what,
-        'fecha': fecha,
+        //'fecha': fecha,
         'done': done,
       };
 
@@ -108,6 +108,7 @@ class _TodoListPageState extends State<TodoListPage> {
           });
         },
         child: ListTile(
+          minVerticalPadding: 20,
           leading: Checkbox(
             //checkColor: Colors.blueAccent,
             activeColor: Color.fromARGB(74, 146, 145, 146),
@@ -127,12 +128,12 @@ class _TodoListPageState extends State<TodoListPage> {
                   : TextDecoration.none),
             ),
           ),
-          subtitle: Text(
+          /*subtitle: Text(
             DateFormat('kk:mma, dd-MM-yyyy')
                 .format(_todos![index].fecha)
                 .toString(),
             style: TextStyle(color: Colors.grey),
-          ),
+          ),*/
         ),
       ),
     );
@@ -157,7 +158,7 @@ class _TodoListPageState extends State<TodoListPage> {
           )
               .then((what) {
             setState(() {
-              _todos!.add(Todo(what, DateTime.now()));
+              _todos!.add(Todo(what));
             });
           });
         },

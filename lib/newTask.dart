@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/cupertino.dart';
 
 class NewTodoPage extends StatefulWidget {
   //const NewTodoPage({Key? key}) : super(key: key);
@@ -30,7 +31,7 @@ class _NewTodoPageState extends State<NewTodoPage>
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(title: const Text("New Todo...")),
+        appBar: AppBar(title: const Text("Nueva tarea")),
         body: Padding(
           padding: const EdgeInsets.all(16.0),
           child: Column(
@@ -43,7 +44,6 @@ class _NewTodoPageState extends State<NewTodoPage>
                     child: Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 12),
                       child: TextField(
-                        
                         keyboardType: TextInputType.text,
                         controller: _controller,
                         onChanged: (text) => setState(() {}),
@@ -51,17 +51,19 @@ class _NewTodoPageState extends State<NewTodoPage>
                           Navigator.of(context).pop(what);
                           Navigator.of(context).pop(DateTime.now());
                         },
+                        decoration: const InputDecoration(hintText: 'Título'),
                       ),
                     ),
                   ),
+                  IconButton(
+                    iconSize: 40,
+                    icon: Icon(CupertinoIcons.arrow_right_circle),
+                    onPressed: () {
+                      Navigator.of(context).pop(_controller.text);
+                    },
+                  )
                 ],
               ),
-              RaisedButton(
-                child: const Text("Añadir"),
-                onPressed: () {
-                  Navigator.of(context).pop(_controller.text);
-                },
-              )
             ],
           ),
         ));
