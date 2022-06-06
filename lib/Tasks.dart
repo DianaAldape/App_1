@@ -5,18 +5,25 @@ import 'dart:convert';
 import 'dart:io';
 import 'package:path_provider/path_provider.dart';
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
+
+import 'newTask.dart';
 
 class Todo {
   String what;
   bool done;
-  Todo(this.what) : done = false;
+  DateTime fecha;
+
+  Todo(this.what, this.fecha) : done = false;
 
   Todo.fromJson(Map<String, dynamic> json)
       : what = json['what'],
+        fecha = DateTime.parse(json['fecha'] as String),
         done = json['done'];
 
   Map<String, dynamic> toJson() => {
         'what': what,
+        'fecha': fecha,
         'done': done,
       };
 
@@ -120,6 +127,12 @@ class _TodoListPageState extends State<TodoListPage> {
                   : TextDecoration.none),
             ),
           ),
+          subtitle: Text(
+            DateFormat('kk:mma, dd-MM-yyyy')
+                .format(_todos![index].fecha)
+                .toString(),
+            style: TextStyle(color: Colors.grey),
+          ),
         ),
       ),
     );
@@ -144,61 +157,11 @@ class _TodoListPageState extends State<TodoListPage> {
           )
               .then((what) {
             setState(() {
-              _todos!.add(Todo(what));
+              _todos!.add(Todo(what, DateTime.now()));
             });
           });
         },
       ),
     );
-  }
-}
-
-class NewTodoPage extends StatefulWidget {
-  //const NewTodoPage({Key? key}) : super(key: key);
-
-  @override
-  //State<NewTodoPage> createState() => _NewTodoPageState();
-  _NewTodoPageState createState() => _NewTodoPageState();
-}
-
-class _NewTodoPageState extends State<NewTodoPage>
-//with SingleTickerProviderStateMixin
-{
-  //late AnimationController _controller;
-  late TextEditingController _controller;
-
-  @override
-  void initState() {
-    super.initState();
-    _controller = TextEditingController();
-  }
-
-  @override
-  void dispose() {
-    super.dispose();
-    _controller.dispose();
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-        appBar: AppBar(title: const Text("New Todo...")),
-        body: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            TextField(
-              controller: _controller,
-              onSubmitted: (what) {
-                Navigator.of(context).pop(what);
-              },
-            ),
-            RaisedButton(
-              child: const Text("Añadir"),
-              onPressed: () {
-                Navigator.of(context).pop(_controller.text);
-              },
-            )
-          ],
-        ));
   }
 }

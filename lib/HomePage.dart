@@ -67,7 +67,7 @@ class _MyHomePageState extends State<HomePage> {
           onTap: (index) => setState(() => this.index = index),
         ),
       ),
-      floatingActionButton: SpeedDial(
+      /*floatingActionButton: SpeedDial(
         animatedIcon: AnimatedIcons.menu_close,
         overlayColor: Colors.black,
         overlayOpacity: 0.4,
@@ -98,7 +98,7 @@ class _MyHomePageState extends State<HomePage> {
                 );
               }),
         ],
-      ),
+      ),*/
       drawer: _getDrawer(context),
 
       //HiddenDrawerMenu(
