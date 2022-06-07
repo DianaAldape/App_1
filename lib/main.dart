@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:prueba2/models/newNote.dart';
-import 'package:prueba2/services/appState.dart';
 import 'Drawer/selectTheme.dart';
-import 'HomePage.dart';
+import 'Notas/Notas.dart';
+import 'Notas/contenido.dart';
+import 'Notas/formulario.dart';
+import 'home_page.dart';
 
 //void main() {
 //runApp(MaterialApp(debugShowCheckedModeBanner: false, home: MyApp()));
@@ -52,11 +53,13 @@ class MaterialAppWithTheme extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       theme: theme.getTheme(),
+      initialRoute: HomePage.nombrePagina,
       routes: {
-        '/': (_) => HomePage(),
-        'nuevo': (_) => NewNotePage(),
+        HomePage.nombrePagina: (BuildContext context) => HomePage(),
+        listadoPage.nombrePagina: (BuildContext context) => listadoPage(),
+        FormularioPage.nombrePagina: (BuildContext context) => FormularioPage(),
+        ContenidoPage.nombrePagina: (BuildContext context) => ContenidoPage(),
       },
-      initialRoute: '/',
     );
   }
 }

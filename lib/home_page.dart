@@ -1,20 +1,21 @@
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:fluttertoast/fluttertoast.dart';
+import 'package:prueba2/Notas/Notas.dart';
 //import 'package:hidden_drawer_menu/hidden_drawer_menu.dart';
 import 'package:toggle_switch/toggle_switch.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'Calendar.dart';
-import 'Tasks.dart';
+import 'calendar.dart';
+import 'tasks.dart';
 import '/Drawer/Settings.dart';
 import '/Drawer/Share.dart';
 import 'Drawer/selectTheme.dart';
 import 'package:flutter_speed_dial/flutter_speed_dial.dart';
 
-import 'models/newNote.dart';
-
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
+
+  static const nombrePagina = 'homePage';
 
   @override
   State<HomePage> createState() => _MyHomePageState();
@@ -27,7 +28,7 @@ class _MyHomePageState extends State<HomePage> {
   final screens = [
     Calendar(),
     const TodoListPage(),
-    NewNotePage(),
+    listadoPage(),
   ];
 
   @override
