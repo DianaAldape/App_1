@@ -147,15 +147,55 @@ class _TodoListPageState extends State<TodoListPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Logo"),
+        //flexibleSpace: ,
+        toolbarHeight: 55,
+        toolbarOpacity: 0.6,
+        excludeHeaderSemantics: true,
+        title: const Text("Tareas"),
         elevation: 10,
         centerTitle: true,
-        actions: [
-          Icon(Icons.delete_forever),
-        ],
       ),
       //backgroundColor: Colors.white,
+
+      floatingActionButtonLocation: FloatingActionButtonLocation.endFloat,
+      floatingActionButton: SpeedDial(
+        animatedIcon: AnimatedIcons.menu_close,
+        activeBackgroundColor: Colors.red,
+        activeForegroundColor: Colors.red,
+        //backgroundColor: Colors.blueGrey,
+        overlayColor: Colors.black,
+        overlayOpacity: 0.2,
+        spacing: 20,
+        buttonSize: const Size(56, 56),
+        childrenButtonSize: const Size(55.0, 55.0),
+        spaceBetweenChildren: 18,
+        curve: Curves.bounceIn,
+        children: [
+          SpeedDialChild(
+            child: Icon(Icons.delete_forever),
+            label: 'Eliminar',
+            onTap: () => _removeChecked(),
+          ),
+          SpeedDialChild(
+              child: Icon(Icons.add),
+              label: 'Nueva',
+              onTap: () {
+                Navigator.of(context)
+                    .push(
+                  MaterialPageRoute(
+                    builder: (_) => NewTodoPage(),
+                  ),
+                )
+                    .then((what) {
+                  setState(() {
+                    _todos!.add(Todo(what));
+                  });
+                });
+              })
+        ],
+      ),
       body: _buildList(),
+/*
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       floatingActionButton: Column(
         //mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -190,7 +230,7 @@ class _TodoListPageState extends State<TodoListPage> {
             },
           ),
         ],
-      ),
+      ),*/
     );
   }
 }

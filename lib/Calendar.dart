@@ -31,7 +31,10 @@ class _CalendarState extends State<Calendar> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Logo"),
+        toolbarHeight: 55,
+        title: const Text("Eventos"),
+        toolbarOpacity: 0.6,
+        centerTitle: true,
       ),
       //backgroundColor: Colors.white,
       body: //Text("Calendario"),

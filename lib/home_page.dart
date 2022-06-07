@@ -30,6 +30,7 @@ class _MyHomePageState extends State<HomePage> {
     const TodoListPage(),
     listadoPage(),
     //Drawer(),
+    //_getDrawer(context);
   ];
 
   @override
@@ -40,6 +41,7 @@ class _MyHomePageState extends State<HomePage> {
     final _scaffKey = GlobalKey<ScaffoldState>();
 
     final items = <Widget>[
+      //const Icon(Icons.pages, size: 30),
       const Icon(Icons.calendar_month_outlined, size: 30),
       const Icon(Icons.task_outlined, size: 30),
       const Icon(Icons.article_outlined, size: 30),
@@ -59,10 +61,11 @@ class _MyHomePageState extends State<HomePage> {
             //iconTheme: const IconThemeData(),
             ),
         child: CurvedNavigationBar(
+          //padding: EdgeInsets.all(20),
           key: navigationKey,
           color: Color.fromARGB(33, 112, 113, 113),
           backgroundColor: Colors.transparent,
-          height: 70,
+          height: 65,
           //animationCurve: Curves.easeInCirc,
           //animationDuration: const Duration(milliseconds: 1200),
           index: index,

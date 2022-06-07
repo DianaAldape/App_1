@@ -1,8 +1,11 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:prueba2/Tasks.dart';
+import 'package:prueba2/home_page.dart';
 
 class NewTodoPage extends StatefulWidget {
+  static const nombrePagina = 'nuevaTarea';
   //const NewTodoPage({Key? key}) : super(key: key);
 
   @override
@@ -70,10 +73,12 @@ class _NewTodoPageState extends State<NewTodoPage>
                   ),
                   IconButton(
                       iconSize: 40,
-                      icon: Icon(CupertinoIcons.arrow_right_circle),
+                      icon: const Icon(CupertinoIcons.arrow_right_circle),
                       onPressed: () {
                         if (_formularioKey.currentState!.validate()) {
                           Navigator.of(context).pop(_controller.text);
+                          //Navigator.pushNamed(
+                          //  context, TodoListPage.nombrePagina);
                         }
                       }),
                 ],

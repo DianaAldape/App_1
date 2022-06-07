@@ -19,6 +19,8 @@ class _listadoPageState extends State<listadoPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        toolbarHeight: 55,
+        toolbarOpacity: 0.6,
         title: Text("Notas"),
         elevation: 10,
         centerTitle: true,
