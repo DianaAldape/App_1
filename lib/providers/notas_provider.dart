@@ -7,13 +7,33 @@ class NotasProvider {
     _notas = [
       {
         'titulo': "Flutter",
-        'contenido': "Modo Null Safety",
+        'contenido': "Que onda con el modo null safety",
         'fecha': DateTime.now(),
       },
       {
         'titulo': "App compu",
         'contenido':
             "Me falta: \n Calendario\nAcomodar botones de tareas y notas",
+        'fecha': DateTime.now(),
+      },
+      {
+        'titulo': "Prueba 3",
+        'contenido': "Contenido de nota 3",
+        'fecha': DateTime.now(),
+      },
+      {
+        'titulo': "Prueba 4",
+        'contenido': "Prueba de nota para editar",
+        'fecha': DateTime.now(),
+      },
+      {
+        'titulo': "Borrar",
+        'contenido': "Nota de prueba para borrar ",
+        'fecha': DateTime.now(),
+      },
+      {
+        'titulo': "Tarea Servicio",
+        'contenido': "Reproducir codigo\nAcomodar Git\netc",
         'fecha': DateTime.now(),
       },
     ];

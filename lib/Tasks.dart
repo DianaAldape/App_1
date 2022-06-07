@@ -37,6 +37,8 @@ class TodoListPage extends StatefulWidget {
     Key? key,
   }) : super(key: key);
 
+  static const nombrePagina = 'tareas';
+
   @override
   _TodoListPageState createState() => _TodoListPageState();
 }
@@ -144,6 +146,14 @@ class _TodoListPageState extends State<TodoListPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        title: const Text("Logo"),
+        elevation: 10,
+        centerTitle: true,
+        actions: [
+          Icon(Icons.delete_forever),
+        ],
+      ),
       //backgroundColor: Colors.white,
       body: _buildList(),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,

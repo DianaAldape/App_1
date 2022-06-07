@@ -3,6 +3,7 @@ import 'package:table_calendar/table_calendar.dart';
 import 'package:flutter/material.dart';
 
 class Calendar extends StatefulWidget {
+  static const nombrePagina = 'calendar';
   @override
   State<Calendar> createState() => _CalendarState();
 }
@@ -29,6 +30,9 @@ class _CalendarState extends State<Calendar> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        title: const Text("Logo"),
+      ),
       //backgroundColor: Colors.white,
       body: //Text("Calendario"),
           SingleChildScrollView(

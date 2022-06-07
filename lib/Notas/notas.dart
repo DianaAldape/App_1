@@ -18,14 +18,24 @@ class _listadoPageState extends State<listadoPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        title: Text("Notas"),
+        elevation: 10,
+        centerTitle: true,
+      ),
       body: (NotasProvider().notas.isNotEmpty)
           ? ListView(children: _creatItem(context))
           : const Center(
               child: Text("No hay tareas pendientes"),
             ),
       floatingActionButton: FloatingActionButton(
-        onPressed: () =>
-            Navigator.pushNamed(context, FormularioPage.nombrePagina),
+        onPressed: () {
+          try {
+            Navigator.pushNamed(context, FormularioPage.nombrePagina);
+          } catch (e) {
+            print(e);
+          }
+        },
         child: Icon(Icons.add),
       ),
     );

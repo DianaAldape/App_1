@@ -7,9 +7,9 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'calendar.dart';
 import 'tasks.dart';
-import '/Drawer/Settings.dart';
-import '/Drawer/Share.dart';
-import 'Drawer/selectTheme.dart';
+import '/drawer/Settings.dart';
+import '/drawer/Share.dart';
+import 'drawer/selectTheme.dart';
 import 'package:flutter_speed_dial/flutter_speed_dial.dart';
 
 class HomePage extends StatefulWidget {
@@ -29,6 +29,7 @@ class _MyHomePageState extends State<HomePage> {
     Calendar(),
     const TodoListPage(),
     listadoPage(),
+    //Drawer(),
   ];
 
   @override
@@ -46,11 +47,11 @@ class _MyHomePageState extends State<HomePage> {
 
     return Scaffold(
       key: _scaffKey,
-      appBar: AppBar(
-        title: const Text("Logo"),
-        elevation: 10,
-        centerTitle: true,
-      ),
+      //appBar: AppBar(
+      //title: const Text("Logo"),
+      //elevation: 10,
+      //centerTitle: true,
+      //),
       body: screens[index],
       bottomNavigationBar: Theme(
         data: Theme.of(context).copyWith(

@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'Drawer/selectTheme.dart';
+import 'package:prueba2/Tasks.dart';
+import 'package:prueba2/drawer/selectTheme.dart';
+import 'drawer/selectTheme.dart';
 import 'Notas/Notas.dart';
 import 'Notas/contenido.dart';
 import 'Notas/formulario.dart';
@@ -59,6 +61,8 @@ class MaterialAppWithTheme extends StatelessWidget {
         listadoPage.nombrePagina: (BuildContext context) => listadoPage(),
         FormularioPage.nombrePagina: (BuildContext context) => FormularioPage(),
         ContenidoPage.nombrePagina: (BuildContext context) => ContenidoPage(),
+        TodoListPage.nombrePagina: (BuildContext context) => TodoListPage()
+        //pageTheme.nombrePagina:
       },
     );
   }

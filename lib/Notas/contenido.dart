@@ -1,6 +1,9 @@
 // ignore_for_file: deprecated_member_use
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/routes.dart';
+import 'package:flutter_speed_dial/flutter_speed_dial.dart';
+import 'package:prueba2/Notas/Notas.dart';
+import 'package:prueba2/home_page.dart';
 
 import '../providers/notas_provider.dart';
 import 'formulario.dart';
@@ -21,36 +24,69 @@ class ContenidoPage extends StatelessWidget {
       appBar: AppBar(
         title: Text("${nota['titulo']}"),
       ),
-      body: Padding(
-        padding: const EdgeInsets.all(20),
-        child: Column(
-          //mainAxisAlignment: MainAxisAlignment.start,
-          crossAxisAlignment: CrossAxisAlignment.start,
-          //textDirection: TextDirection.rtl,
-
-          children: <Widget>[
-            Text("${nota['contenido']}"),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                RaisedButton(
-                  onPressed: () => Navigator.pushNamed(
-                      context, FormularioPage.nombrePagina,
-                      arguments: nota),
-                  child: const Text("Editar"),
-                ),
-                RaisedButton(
-                  onPressed: () {
-                    NotasProvider().eliminarNota(nota);
-                    Navigator.pop(context);
-                  },
-                  child: const Text("Borrar"),
-                ),
-              ],
-            )
-          ],
-        ),
+      //
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
+      floatingActionButton: SpeedDial(
+        animatedIcon: AnimatedIcons.menu_close,
+        activeBackgroundColor: Colors.red,
+        activeForegroundColor: Colors.red,
+        //backgroundColor: Colors.blueGrey,
+        overlayColor: Colors.black,
+        overlayOpacity: 0.2,
+        spacing: 20,
+        buttonSize: const Size(60, 60),
+        childrenButtonSize: const Size(58.0, 58.0),
+        spaceBetweenChildren: 18,
+        curve: Curves.bounceIn,
+        children: [
+          SpeedDialChild(
+              child: Icon(Icons.delete_forever),
+              label: 'Eliminar',
+              onTap: () {
+                try {
+                  NotasProvider().eliminarNota(nota);
+                  Navigator.popAndPushNamed(context, listadoPage.nombrePagina);
+                } catch (e) {
+                  print(e);
+                }
+              }),
+          SpeedDialChild(
+            child: Icon(Icons.edit),
+            label: 'Editar',
+            onTap: () {
+              Navigator.pushNamed(context, FormularioPage.nombrePagina,
+                  arguments: nota);
+            },
+            //onTap: () => showToast('Selected'),
+          ),
+        ],
       ),
+      body: Padding(
+          padding: const EdgeInsets.all(20),
+          child: Column(
+            //mainAxisAlignment: MainAxisAlignment.start,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            //textDirection: TextDirection.rtl,
+
+            children: <Widget>[
+              Text("${nota['contenido']}"),
+              //),
+/*
+              RaisedButton(
+                onPressed: () => Navigator.pushNamed(
+                    context, FormularioPage.nombrePagina,
+                    arguments: nota),
+                child: const Text("Editar"),
+              ),
+              RaisedButton(
+                onPressed: () {
+                  NotasProvider().eliminarNota(nota);
+                  Navigator.popAndPushNamed(context, HomePage.nombrePagina);
+                },
+                child: const Text("Borrar"),
+              ),*/
+            ],
+          )),
     );
   }
 }
