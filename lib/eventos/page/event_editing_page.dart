@@ -88,24 +88,24 @@ class _EventEditingPageState extends State<EventEditingPage> {
       ];
 
   Widget buildTitle() => TextFormField(
-        style: TextStyle(fontSize: 12),
+        //style: TextStyle(fontSize: 15),
         decoration: InputDecoration(
           border: UnderlineInputBorder(),
           hintText: 'Titulo',
         ),
         onFieldSubmitted: (_) => saveForm(),
         validator: (title) =>
-            title != null && title.isEmpty ? 'Title cannot be empty' : null,
+            title != null && title.isEmpty ? 'Este campo es requerido' : null,
         controller: titleController,
       );
 
   Widget buildDescription() => TextFormField(
         decoration: InputDecoration(
           border: OutlineInputBorder(),
-          hintText: 'Add Details',
+          hintText: 'Detalles',
         ),
         textInputAction: TextInputAction.newline,
-        maxLines: 5,
+        maxLines: 10,
         onFieldSubmitted: (_) => saveForm(),
         controller: descriptionController,
       );
@@ -116,7 +116,7 @@ class _EventEditingPageState extends State<EventEditingPage> {
           if (!isAllDay) buildTo(),
           CheckboxListTile(
             controlAffinity: ListTileControlAffinity.leading,
-            title: Text('All Day Event'),
+            title: Text('Todo el día'),
             value: isAllDay,
             activeColor: Theme.of(context).primaryColor,
             onChanged: (value) => setState(() => isAllDay = value!),
@@ -125,7 +125,7 @@ class _EventEditingPageState extends State<EventEditingPage> {
       );
 
   Widget buildFrom() => buildHeader(
-        header: 'FROM',
+        header: 'Inicia',
         child: Row(
           children: [
             Expanded(
@@ -147,7 +147,7 @@ class _EventEditingPageState extends State<EventEditingPage> {
       );
 
   Widget buildTo() => buildHeader(
-        header: 'TO',
+        header: 'Termina',
         child: Row(
           children: [
             Expanded(

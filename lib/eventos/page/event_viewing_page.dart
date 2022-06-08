@@ -27,12 +27,12 @@ class EventViewingPage extends StatelessWidget {
             SizedBox(height: 32),
             Text(
               event.title,
-              style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+              style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
             ),
             const SizedBox(height: 24),
             Text(
               event.description,
-              style: TextStyle(color: Colors.white, fontSize: 18),
+              style: TextStyle(color: Colors.white),
             ),
           ],
         ),
@@ -41,15 +41,15 @@ class EventViewingPage extends StatelessWidget {
   Widget buildDateTime(Event event) {
     return Column(
       children: [
-        buildDate(event.isAllDay ? 'All-day' : 'From', event.from),
-        if (!event.isAllDay) buildDate('To', event.to),
+        buildDate(event.isAllDay ? 'Todo el día' : 'De', event.from),
+        if (!event.isAllDay) buildDate('A', event.to),
       ],
     );
   }
 
   Widget buildDate(String title, DateTime date) {
-    final styleTitle = TextStyle(fontSize: 20, fontWeight: FontWeight.bold);
-    final styleDate = TextStyle(fontSize: 18);
+    final styleTitle = TextStyle(fontWeight: FontWeight.bold);
+    final styleDate = TextStyle();
 
     return Container(
       padding: EdgeInsets.symmetric(vertical: 8),

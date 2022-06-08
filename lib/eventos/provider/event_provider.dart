@@ -6,14 +6,14 @@ import '../model/event.dart';
 class EventProvider extends ChangeNotifier {
   final List<Event> _events = [
     Event(
-      title: 'Learn Flutter',
-      description: 'Watch Flutter YouTube Videos',
+      title: 'Reunion con Oscar',
+      description: 'Actualizar repositorio',
       from: DateTime.now(),
       to: DateTime.now().add(Duration(hours: 2)),
     ),
     Event(
-      title: 'Meeting With Daniel',
-      description: 'Tea Time! 🍵',
+      title: 'Entrega proyecto',
+      description: '',
       from: DateTime.now().subtract(Duration(hours: 6)),
       to: DateTime.now().add(Duration(hours: 4)),
     )
