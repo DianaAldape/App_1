@@ -8,9 +8,11 @@ import 'package:provider/provider.dart';
 import 'calendar.dart';
 import 'tasks.dart';
 import '/drawer/Settings.dart';
-import '/drawer/Share.dart';
 import 'drawer/selectTheme.dart';
 import 'package:flutter_speed_dial/flutter_speed_dial.dart';
+import 'package:flutter_share/flutter_share.dart';
+
+import 'package:share/share.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -49,11 +51,11 @@ class _MyHomePageState extends State<HomePage> {
 
     return Scaffold(
       key: _scaffKey,
-      //appBar: AppBar(
-      //title: const Text("Logo"),
-      //elevation: 10,
-      //centerTitle: true,
-      //),
+      appBar: AppBar(
+        title: const Text("Logo"),
+        elevation: 10,
+        centerTitle: true,
+      ),
       body: screens[index],
       bottomNavigationBar: Theme(
         data: Theme.of(context).copyWith(
@@ -68,7 +70,7 @@ class _MyHomePageState extends State<HomePage> {
           height: 65,
           //animationCurve: Curves.easeInCirc,
           //animationDuration: const Duration(milliseconds: 1200),
-          index: index,
+          //index: index,
           items: items,
           onTap: (index) => setState(() => this.index = index),
         ),
@@ -166,17 +168,31 @@ class _MyHomePageState extends State<HomePage> {
                         Icon(Icons.light_mode),
                         Icon(Icons.nightlight),
                       ],
-                      radiusStyle: true,
+                      //radiusStyle: true,
                       onToggle: (index) {
-                        if (index == 0) {
+                        if (index == 1) {
                           print(index);
-                          index = 0;
+                          theme.setTheme(ThemeData.dark());
+                          //index = 0;
                           //cambiarTema = 1;
-                          //Future.delayed(const Duration(milliseconds: 500));
-                          //theme.setTheme(ThemeData.dark());
+
                         } else {
                           print(index);
-                          //theme.setTheme(ThemeData.dark());
+                          Future.delayed(const Duration(milliseconds: 500));
+                          theme.setTheme(ThemeData(
+                            brightness: Brightness.light,
+                            primaryColor: const Color(0xffe0607e),
+                            accentColor: const Color(0xfff6c5af),
+                            appBarTheme: const AppBarTheme(
+                              backgroundColor: Color(0xffe0607e),
+                            ),
+                            checkboxTheme: CheckboxThemeData(
+                              checkColor: MaterialStateProperty.all(
+                                  const Color(0xffdbd3ad)),
+                              fillColor: MaterialStateProperty.all(
+                                  const Color(0xfff6c5af)),
+                            ),
+                          ));
                         }
                       },
                     ),
@@ -210,11 +226,7 @@ class _MyHomePageState extends State<HomePage> {
                 Navigator.pop(context);
               }),
           ListTile(
-              title: const Text("Otro"),
-              leading: const Icon(Icons.home),
-              onTap: () {}),
-          ListTile(
-              title: const Text("Tema"),
+              title: const Text("Temas"),
               leading: const Icon(Icons.color_lens_outlined),
               onTap: () {
                 Navigator.pop(context);
@@ -227,11 +239,7 @@ class _MyHomePageState extends State<HomePage> {
               title: const Text("Compartir"),
               leading: const Icon(Icons.share),
               onTap: () {
-                Navigator.pop(context);
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => Share()),
-                );
+                Share.share("URL de descarga de la aplicación");
               }),
           ListTile(
             title: const Text("Configuración"),

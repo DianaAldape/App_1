@@ -68,14 +68,16 @@ ThemeData Tema3(BuildContext context) {
 ThemeData Tema4(BuildContext context) {
   return ThemeData(
     brightness: Brightness.light,
-    primaryColor: const Color(0xffe0607e),
-    accentColor: const Color(0xfff6c5af),
-    appBarTheme: const AppBarTheme(
-      backgroundColor: Color(0xffe0607e),
-    ),
+    //primaryColor: const Color(0xff25ced1),
+    //accentColor: const Color(0xfffceade),
+    primarySwatch: Colors.yellow,
+    unselectedWidgetColor: const Color(0xfffceade),
+    cardColor: Color.fromARGB(255, 253, 30, 186),
+    //appBarTheme: const AppBarTheme(backgroundColor: const Color(0xff25ced1)),
     checkboxTheme: CheckboxThemeData(
-      checkColor: MaterialStateProperty.all(const Color(0xffdbd3ad)),
-      fillColor: MaterialStateProperty.all(const Color(0xfff6c5af)),
+      checkColor: MaterialStateProperty.all(const Color(0xffff8a5b)),
+      fillColor: MaterialStateProperty.all(const Color(0xffea526f)),
+      overlayColor: MaterialStateProperty.all(const Color(0xffff9d5e)),
     ),
   );
 }

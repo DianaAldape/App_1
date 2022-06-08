@@ -4,7 +4,9 @@ import 'package:flutter/src/widgets/routes.dart';
 import 'package:flutter_speed_dial/flutter_speed_dial.dart';
 import 'package:prueba2/Notas/Notas.dart';
 import 'package:prueba2/home_page.dart';
+import 'package:flutter_share/flutter_share.dart';
 
+import 'package:share/share.dart';
 import '../providers/notas_provider.dart';
 import 'formulario.dart';
 
@@ -41,7 +43,7 @@ class ContenidoPage extends StatelessWidget {
         children: [
           SpeedDialChild(
               child: Icon(Icons.delete_forever),
-              label: 'Eliminar',
+              //label: 'Eliminar',
               onTap: () {
                 try {
                   NotasProvider().eliminarNota(nota);
@@ -52,12 +54,19 @@ class ContenidoPage extends StatelessWidget {
               }),
           SpeedDialChild(
             child: Icon(Icons.edit),
-            label: 'Editar',
+            //label: 'Editar',
             onTap: () {
               Navigator.pushNamed(context, FormularioPage.nombrePagina,
                   arguments: nota);
             },
             //onTap: () => showToast('Selected'),
+          ),
+          SpeedDialChild(
+            child: Icon(Icons.share),
+            //label: 'Editar',
+            onTap: () {
+              Share.share("${nota['contenido']}");
+            },
           ),
         ],
       ),

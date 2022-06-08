@@ -30,12 +30,20 @@ class _CalendarState extends State<Calendar> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      body: SfCalendar(
+        view: CalendarView.month,
+        todayHighlightColor: Colors.grey,
+        headerHeight: 40,
+      ),
+
+      /*
+      /*
       appBar: AppBar(
         toolbarHeight: 55,
         title: const Text("Eventos"),
         toolbarOpacity: 0.6,
         centerTitle: true,
-      ),
+      ),*/
       //backgroundColor: Colors.white,
       body: //Text("Calendario"),
           SingleChildScrollView(
@@ -56,7 +64,7 @@ class _CalendarState extends State<Calendar> {
             ),
           ],
         ),
-      ),
+      ),*/
       floatingActionButton: FloatingActionButton(
         //backgroundColor: Colors.blueAccent,
         onPressed: _incrementCounter,

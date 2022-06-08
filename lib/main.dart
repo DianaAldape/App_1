@@ -21,11 +21,47 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return ChangeNotifierProvider(
       // ignore: unused_label
-      create: (_) => ThemeChanger(ThemeData()),
+      create: (_) => ThemeChanger(ThemeData(
+        brightness: Brightness.light,
+        primaryColor: const Color(0xffe0607e),
+        accentColor: const Color(0xfff6c5af),
+        appBarTheme: const AppBarTheme(
+          backgroundColor: Color(0xffe0607e),
+        ),
+        checkboxTheme: CheckboxThemeData(
+          checkColor: MaterialStateProperty.all(const Color(0xffdbd3ad)),
+          fillColor: MaterialStateProperty.all(const Color(0xfff6c5af)),
+        ),
+      )),
       child: MaterialAppWithTheme(),
     );
   }
 }
+
+class MaterialAppWithTheme extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    final theme = Provider.of<ThemeChanger>(context);
+    return MaterialApp(
+      debugShowCheckedModeBanner: false,
+      theme: theme.getTheme(),
+      //home: SplashScreen(),
+      initialRoute: HomePage.nombrePagina,
+
+      routes: {
+        HomePage.nombrePagina: (BuildContext context) => HomePage(),
+        listadoPage.nombrePagina: (BuildContext context) => listadoPage(),
+        FormularioPage.nombrePagina: (BuildContext context) => FormularioPage(),
+        ContenidoPage.nombrePagina: (BuildContext context) => ContenidoPage(),
+        TodoListPage.nombrePagina: (BuildContext context) => TodoListPage(),
+        NewTodoPage.nombrePagina: (BuildContext context) => NewTodoPage()
+
+        //pageTheme.nombrePagina:
+      },
+    );
+
+    //Clase original
+
 /*
 class MaterialAppWithTheme extends StatelessWidget {
   @override
@@ -46,27 +82,5 @@ class MaterialAppWithTheme extends StatelessWidget {
   }
 }
 */
-
-//Clase original
-
-class MaterialAppWithTheme extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    final theme = Provider.of<ThemeChanger>(context);
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      theme: theme.getTheme(),
-      initialRoute: HomePage.nombrePagina,
-      routes: {
-        HomePage.nombrePagina: (BuildContext context) => HomePage(),
-        listadoPage.nombrePagina: (BuildContext context) => listadoPage(),
-        FormularioPage.nombrePagina: (BuildContext context) => FormularioPage(),
-        ContenidoPage.nombrePagina: (BuildContext context) => ContenidoPage(),
-        TodoListPage.nombrePagina: (BuildContext context) => TodoListPage(),
-        NewTodoPage.nombrePagina: (BuildContext context) => NewTodoPage()
-
-        //pageTheme.nombrePagina:
-      },
-    );
   }
 }

@@ -146,6 +146,7 @@ class _TodoListPageState extends State<TodoListPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      /*
       appBar: AppBar(
         //flexibleSpace: ,
         toolbarHeight: 55,
@@ -155,6 +156,7 @@ class _TodoListPageState extends State<TodoListPage> {
         elevation: 10,
         centerTitle: true,
       ),
+      */
       //backgroundColor: Colors.white,
 
       floatingActionButtonLocation: FloatingActionButtonLocation.endFloat,

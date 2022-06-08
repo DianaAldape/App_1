@@ -16,6 +16,7 @@ class FormularioPage extends StatefulWidget {
 class _FormularioPageState extends State<FormularioPage> {
   final idForm = GlobalKey<FormState>();
   Map<String, dynamic> nuevaNota = {};
+  Map<String, dynamic> agregar_nota = {};
   Map<String, dynamic> nota = {};
   DateTime fecha = DateTime.now();
 
@@ -26,7 +27,8 @@ class _FormularioPageState extends State<FormularioPage> {
       nota = ModalRoute.of(context)?.settings.arguments as Map<String, dynamic>;
     } catch (e) {
       print(e);
-      //nota = ModalRoute.of(context)!.settings.arguments as Map<String, dynamic>;
+      //agregar_nota =
+      //ModalRoute.of(context)?.settings.arguments as Map<String, dynamic>;
     }
 
     return Scaffold(
@@ -64,7 +66,7 @@ class _FormularioPageState extends State<FormularioPage> {
         }
       },
       // ignore: unnecessary_null_comparison
-      initialValue: (nota != null) ? nota['titulo'] : "",
+      initialValue: (nota != null) ? nota['titulo'] : agregar_nota['titulo'],
       textCapitalization: TextCapitalization.sentences,
       onSaved: (valor) {
         nuevaNota['titulo'] = valor;
@@ -79,7 +81,8 @@ class _FormularioPageState extends State<FormularioPage> {
       margin: const EdgeInsets.only(top: 20),
       child: TextFormField(
         // ignore: unnecessary_null_comparison
-        initialValue: (nota != null) ? nota['contenido'] : "",
+        initialValue:
+            (nota != null) ? nota['contenido'] : agregar_nota['contenido'],
         textCapitalization: TextCapitalization.sentences,
         onSaved: (valor) {
           nuevaNota['contenido'] = valor;
@@ -110,7 +113,7 @@ class _FormularioPageState extends State<FormularioPage> {
                 //  context, ModalRoute.withName(HomePage.nombrePagina));
                 //Navigator.popAndPushNamed(context, listadoPage.nombrePagina);
                 Navigator.pop(context);
-                Navigator.pushNamed(context, listadoPage.nombrePagina);
+                Navigator.pushNamed(context, HomePage.nombrePagina);
               } else {
                 try {
                   NotasProvider().agregarNota(nuevaNota);
@@ -118,7 +121,7 @@ class _FormularioPageState extends State<FormularioPage> {
                   print(e);
                 }
                 //Navigator.pop(context);
-                Navigator.pushNamed(context, listadoPage.nombrePagina);
+                Navigator.pushNamed(context, HomePage.nombrePagina);
                 //Navigator.popAndPushNamed(context, listadoPage.nombrePagina);
                 //Nav
               }
