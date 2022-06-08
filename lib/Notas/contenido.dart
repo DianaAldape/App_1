@@ -50,7 +50,7 @@ class ContenidoPage extends StatelessWidget {
         IconButton(
           icon: Icon(Icons.share),
           onPressed: () {
-            Share.share("${nota['titulo']}"),
+            Share.share("${nota['contenido']}");
           },
         ),
         IconButton(
