@@ -2,36 +2,26 @@ import 'package:syncfusion_flutter_calendar/calendar.dart';
 import 'package:table_calendar/table_calendar.dart';
 import 'package:flutter/material.dart';
 
-import 'eventos/event_editing_page.dart';
+import 'eventos/page/event_editing_page.dart';
+import 'eventos/widget/calendar_widget.dart';
 
-class Calendar extends StatefulWidget {
-  static const nombrePagina = 'calendar';
+class Calendar extends StatelessWidget {
+  Calendar({Key? key}) : super(key: key);
+
+  /*static const nombrePagina = 'calendar';
   @override
   State<Calendar> createState() => _CalendarState();
 }
 
-class _CalendarState extends State<Calendar> {
-  CalendarFormat format = CalendarFormat.month;
+class _CalendarState extends State<Calendar> {*/
+  /*CalendarFormat format = CalendarFormat.month;
   DateTime selectedDay = DateTime.now();
   DateTime focusedDay = DateTime.now();
-
-  int _counter = 0;
-
-  void _incrementCounter() {
-    setState(() {
-      // This call to setState tells the Flutter framework that something has
-      // changed in this State, which causes it to rerun the build method below
-      // so that the display can reflect the updated values. If we changed
-      // _counter without calling setState(), then the build method would not be
-      // called again, and so nothing would appear to happen.
-      _counter++;
-      print(_counter);
-    });
-  }
-
+*/
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      body: CalendarWidget(),
       /*body: SfCalendar(
         view: CalendarView.month,
         initialDisplayDate: DateTime.now(),
@@ -55,7 +45,7 @@ class _CalendarState extends State<Calendar> {
         centerTitle: true,
       ),*/
       //backgroundColor: Colors.white,
-      body: //Text("Calendario"),
+      /*body: //Text("Calendario"),
           SingleChildScrollView(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -75,10 +65,11 @@ class _CalendarState extends State<Calendar> {
           ],
         ),
       ),
+      */
       floatingActionButton: FloatingActionButton(
         //backgroundColor: Colors.blueAccent,
-        onPressed: _incrementCounter,
-        tooltip: 'Increment',
+        onPressed: () => Navigator.of(context)
+            .push(MaterialPageRoute(builder: (context) => EventEditingPage())),
         child: const Icon(
           Icons.add,
         ),

@@ -3,16 +3,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/routes.dart';
 import 'package:flutter_speed_dial/flutter_speed_dial.dart';
 import 'package:prueba2/Notas/Notas.dart';
+import 'package:prueba2/Notas/providers/notas_provider.dart';
 import 'package:prueba2/home_page.dart';
 import 'package:flutter_share/flutter_share.dart';
 
 import 'package:share/share.dart';
-import '../providers/notas_provider.dart';
 import 'formulario.dart';
 
 class ContenidoPage extends StatelessWidget {
-  const ContenidoPage({Key? key}) : super(key: key);
-
   static const nombrePagina = 'Contenido';
 
   @override

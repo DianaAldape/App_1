@@ -1,13 +1,11 @@
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:fluttertoast/fluttertoast.dart';
-import 'package:prueba2/Notas/Notas.dart';
-import 'package:prueba2/eventos/event_editing_page.dart';
 //import 'package:hidden_drawer_menu/hidden_drawer_menu.dart';
 import 'package:toggle_switch/toggle_switch.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'Notas/Notas.dart';
 import 'calendar.dart';
-import 'tasks.dart';
 import '/drawer/Settings.dart';
 import 'drawer/selectTheme.dart';
 import 'package:flutter_speed_dial/flutter_speed_dial.dart';
@@ -15,9 +13,9 @@ import 'package:flutter_share/flutter_share.dart';
 
 import 'package:share/share.dart';
 
-class HomePage extends StatefulWidget {
-  const HomePage({Key? key}) : super(key: key);
+import 'tareas/tasks.dart';
 
+class HomePage extends StatefulWidget {
   static const nombrePagina = 'homePage';
 
   @override
@@ -29,8 +27,8 @@ class _MyHomePageState extends State<HomePage> {
   int index = 0;
   bool selected = false;
   final screens = [
-    EventEditingPage(),
-    const TodoListPage(),
+    Calendar(),
+    TodoListPage(),
     listadoPage(),
     //Drawer(),
     //_getDrawer(context);
@@ -45,7 +43,7 @@ class _MyHomePageState extends State<HomePage> {
 
     final items = <Widget>[
       //const Icon(Icons.pages, size: 30),
-      const Icon(Icons.calendar_month_outlined, size: 30),
+      Icon(Icons.calendar_month_outlined, size: 30),
       const Icon(Icons.task_outlined, size: 30),
       const Icon(Icons.article_outlined, size: 30),
     ];
@@ -137,7 +135,7 @@ class _MyHomePageState extends State<HomePage> {
         children: <Widget>[
           DrawerHeader(
             margin: EdgeInsets.zero,
-            decoration: const BoxDecoration(
+            decoration: BoxDecoration(
               shape: BoxShape.rectangle,
               image: DecorationImage(
                 image: AssetImage("assets/images/op5.jpg"),
@@ -159,7 +157,7 @@ class _MyHomePageState extends State<HomePage> {
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: <Widget>[
-                    const Text("Modo oscuro"),
+                    Text("Modo oscuro"),
                     ToggleSwitch(
                       minWidth: 50.0,
                       cornerRadius: 28.0,
@@ -179,19 +177,19 @@ class _MyHomePageState extends State<HomePage> {
 
                         } else {
                           print(index);
-                          Future.delayed(const Duration(milliseconds: 500));
+                          Future.delayed(Duration(milliseconds: 500));
                           theme.setTheme(ThemeData(
                             brightness: Brightness.light,
-                            primaryColor: const Color(0xffe0607e),
-                            accentColor: const Color(0xfff6c5af),
-                            appBarTheme: const AppBarTheme(
+                            primaryColor: Color(0xffe0607e),
+                            accentColor: Color(0xfff6c5af),
+                            appBarTheme: AppBarTheme(
                               backgroundColor: Color(0xffe0607e),
                             ),
                             checkboxTheme: CheckboxThemeData(
-                              checkColor: MaterialStateProperty.all(
-                                  const Color(0xffdbd3ad)),
-                              fillColor: MaterialStateProperty.all(
-                                  const Color(0xfff6c5af)),
+                              checkColor:
+                                  MaterialStateProperty.all(Color(0xffdbd3ad)),
+                              fillColor:
+                                  MaterialStateProperty.all(Color(0xfff6c5af)),
                             ),
                           ));
                         }

@@ -92,7 +92,9 @@ class _TodoListPageState extends State<TodoListPage> {
     // ignore: unnecessary_null_comparison
     if (_todos == null) {
       return const Center(
-        child: CircularProgressIndicator(),
+        child: CircularProgressIndicator(
+          color: Colors.grey,
+        ),
       );
     }
     return ListView.builder(

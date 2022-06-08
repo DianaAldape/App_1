@@ -1,37 +1,40 @@
 // ignore_for_file: non_constant_identifier_names
 
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
-import 'package:provider/provider.dart';
 
 ThemeData Tema1(BuildContext context) {
   return ThemeData(
     brightness: Brightness.light,
-    primaryColor: const Color(0xff25ced1),
-    accentColor: const Color(0xfffceade),
-    unselectedWidgetColor: const Color(0xfffceade),
+    primaryColor: Color.fromRGBO(37, 206, 209, 1),
+    unselectedWidgetColor: Color(0xfffceade),
     cardColor: Colors.red[100],
-    appBarTheme: const AppBarTheme(backgroundColor: const Color(0xff25ced1)),
+    appBarTheme: AppBarTheme(backgroundColor: const Color(0xff25ced1)),
     checkboxTheme: CheckboxThemeData(
       checkColor: MaterialStateProperty.all(const Color(0xffff8a5b)),
       fillColor: MaterialStateProperty.all(const Color(0xffea526f)),
       overlayColor: MaterialStateProperty.all(const Color(0xffff9d5e)),
     ),
+    inputDecorationTheme: InputDecorationTheme(
+      focusedBorder: UnderlineInputBorder(
+        borderSide: BorderSide(color: Color(0xff25ced1)),
+      ),
+    ),
+    colorScheme:
+        ColorScheme.fromSwatch().copyWith(secondary: const Color(0xfffceade)),
   );
 }
 
 ThemeData Tema2(BuildContext context) {
   return ThemeData(
+    inputDecorationTheme: InputDecorationTheme(
+      focusedBorder: UnderlineInputBorder(
+        borderSide: BorderSide(color: Color(0xff1a659e)),
+      ),
+    ),
     //scaffoldBackgroundColor: Color(0xff303030),
     brightness: Brightness.light,
     //primarySwatch: Colors.red,
-    primaryColor: const Color(0xff1a659e),
-    //primaryColorLight: Color.fromARGB(255, 241, 128, 162),
-    //primaryColorDark: Color.fromARGB(255, 95, 35, 53),
-    //colorScheme: const ColorScheme.dark(),
-    //iconTheme: const IconThemeData(color: Colors.black45),
-    accentColor: const Color(0xff004e89),
+    primaryColor: Color(0xff1a659e),
     //buttonColor: Color.fromARGB(255, 198, 73, 27),
     //Barra inferior
     //toggleableActiveColor: Colors.blue,
@@ -44,29 +47,41 @@ ThemeData Tema2(BuildContext context) {
       fillColor: MaterialStateProperty.all(const Color(0xfff7c59f)),
       overlayColor: MaterialStateProperty.all(const Color(0xffff6b35)),
     ),
+    colorScheme:
+        ColorScheme.fromSwatch().copyWith(secondary: Color(0xff004e89)),
   );
 }
 
 ThemeData Tema3(BuildContext context) {
   return ThemeData(
+    inputDecorationTheme: InputDecorationTheme(
+      focusedBorder: UnderlineInputBorder(
+        borderSide: BorderSide(color: Color(0xff25ced1)),
+      ),
+    ),
     brightness: Brightness.light,
-    primaryColor: const Color(0xff25ced1),
-    unselectedWidgetColor: const Color(0xfffceade),
+    primaryColor: Color(0xff25ced1),
+    unselectedWidgetColor: Color(0xfffceade),
     cardColor: Colors.red[100],
-    appBarTheme: const AppBarTheme(backgroundColor: Color(0xff25ced1)),
+    appBarTheme: AppBarTheme(backgroundColor: Color(0xff25ced1)),
     checkboxTheme: CheckboxThemeData(
-      checkColor: MaterialStateProperty.all(const Color(0xffff8a5b)),
-      fillColor: MaterialStateProperty.all(const Color(0xffea526f)),
-      overlayColor: MaterialStateProperty.all(const Color(0xffff9d5e)),
+      checkColor: MaterialStateProperty.all(Color(0xffff8a5b)),
+      fillColor: MaterialStateProperty.all(Color(0xffea526f)),
+      overlayColor: MaterialStateProperty.all(Color(0xffff9d5e)),
     ),
     colorScheme:
-        ColorScheme.fromSwatch().copyWith(secondary: const Color(0xfffceade)),
+        ColorScheme.fromSwatch().copyWith(secondary: Color(0xfffceade)),
   );
 }
 
 // ignore: non_constant_identifier_names
 ThemeData Tema4(BuildContext context) {
   return ThemeData(
+    inputDecorationTheme: InputDecorationTheme(
+      focusedBorder: UnderlineInputBorder(
+        borderSide: BorderSide(color: Colors.yellow),
+      ),
+    ),
     brightness: Brightness.light,
     //primaryColor: const Color(0xff25ced1),
     //accentColor: const Color(0xfffceade),
@@ -84,6 +99,11 @@ ThemeData Tema4(BuildContext context) {
 
 ThemeData Tema5(BuildContext context) {
   return ThemeData(
+    inputDecorationTheme: InputDecorationTheme(
+      focusedBorder: UnderlineInputBorder(
+        borderSide: BorderSide(color: Color(0XFFDA344D)),
+      ),
+    ),
     brightness: Brightness.light,
     primaryColor: const Color(0XFFDA344D),
     accentColor: const Color(0xffD91E36),
@@ -99,9 +119,13 @@ ThemeData Tema5(BuildContext context) {
 
 ThemeData Tema6(BuildContext context) {
   return ThemeData(
+    inputDecorationTheme: InputDecorationTheme(
+      focusedBorder: UnderlineInputBorder(
+        borderSide: BorderSide(color: Color(0xff7a918d)),
+      ),
+    ),
     brightness: Brightness.light,
     primaryColor: const Color(0xffdbfeb8),
-    accentColor: const Color(0xffc5edac),
     appBarTheme: const AppBarTheme(
       backgroundColor: Color(0xff7a918d),
     ),
@@ -109,14 +133,20 @@ ThemeData Tema6(BuildContext context) {
       checkColor: MaterialStateProperty.all(const Color(0xffdbfeb8)),
       fillColor: MaterialStateProperty.all(const Color(0xff99c2a2)),
     ),
+    colorScheme:
+        ColorScheme.fromSwatch().copyWith(secondary: const Color(0xffc5edac)),
   );
 }
 
 ThemeData Tema7(BuildContext context) {
   return ThemeData(
+    inputDecorationTheme: InputDecorationTheme(
+      focusedBorder: UnderlineInputBorder(
+        borderSide: BorderSide(color: Color(0xfffc9f5b)),
+      ),
+    ),
     brightness: Brightness.light,
     primaryColor: const Color(0xfffc9f5b),
-    accentColor: const Color(0xff7dcfb6),
     appBarTheme: const AppBarTheme(
       backgroundColor: Color(0xfffc9f5b),
     ),
@@ -125,11 +155,18 @@ ThemeData Tema7(BuildContext context) {
       fillColor: MaterialStateProperty.all(const Color(0xff33ca7f)),
       overlayColor: MaterialStateProperty.all(const Color(0xffff9d5e)),
     ),
+    colorScheme:
+        ColorScheme.fromSwatch().copyWith(secondary: const Color(0xff7dcfb6)),
   );
 }
 
 ThemeData Tema8(BuildContext context) {
   return ThemeData(
+    inputDecorationTheme: InputDecorationTheme(
+      focusedBorder: UnderlineInputBorder(
+        borderSide: BorderSide(color: Color(0xffadc698)),
+      ),
+    ),
     brightness: Brightness.light,
     primaryColor: const Color(0xffadc698),
     accentColor: const Color(0xffc05746),
@@ -146,6 +183,11 @@ ThemeData Tema8(BuildContext context) {
 // ignore: non_constant_identifier_names
 ThemeData Tema9(BuildContext context) {
   return ThemeData(
+    inputDecorationTheme: InputDecorationTheme(
+      focusedBorder: UnderlineInputBorder(
+        borderSide: BorderSide(color: Color.fromARGB(169, 52, 35, 166)),
+      ),
+    ),
     brightness: Brightness.light,
     primaryColor: Color.fromARGB(169, 52, 35, 166),
     accentColor: const Color(0xff171738),

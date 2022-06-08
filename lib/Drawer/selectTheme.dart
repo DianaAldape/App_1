@@ -1,7 +1,6 @@
 // ignore_for_file: deprecated_member_use
 
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
 import 'Themes.dart';
 
@@ -41,8 +40,8 @@ class pageTheme extends StatelessWidget {
             width: 600,
             height: 700,
             decoration: BoxDecoration(
-              color: Color.fromARGB(117, 216, 213, 213).withOpacity(0.4),
-              borderRadius: BorderRadius.circular(15),
+              color: Color.fromARGB(199, 190, 189, 189).withOpacity(0.4),
+              //borderRadius: BorderRadius.circular(15),
             ),
 
             child: Column(

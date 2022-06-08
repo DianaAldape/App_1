@@ -19,4 +19,7 @@ class Utils {
 
     return '$time';
   }
+
+  static DateTime removeTime(DateTime dateTime) =>
+      DateTime(dateTime.year, dateTime.month, dateTime.day);
 }

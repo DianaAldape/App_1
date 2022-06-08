@@ -1,12 +1,10 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:prueba2/home_page.dart';
+import 'package:prueba2/Notas/providers/notas_provider.dart';
+import '../home_page.dart';
 import 'notas.dart';
-import '../providers/notas_provider.dart';
 
 class FormularioPage extends StatefulWidget {
-  const FormularioPage({Key? key}) : super(key: key);
-
   static const nombrePagina = "formulario";
 
   @override

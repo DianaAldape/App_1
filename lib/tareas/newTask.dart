@@ -1,8 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
-import 'package:prueba2/Tasks.dart';
-import 'package:prueba2/home_page.dart';
 
 class NewTodoPage extends StatefulWidget {
   static const nombrePagina = 'nuevaTarea';
