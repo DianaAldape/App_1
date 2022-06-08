@@ -1,6 +1,7 @@
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:prueba2/Notas/Notas.dart';
+import 'package:prueba2/eventos/event_editing_page.dart';
 //import 'package:hidden_drawer_menu/hidden_drawer_menu.dart';
 import 'package:toggle_switch/toggle_switch.dart';
 import 'package:flutter/material.dart';
@@ -28,7 +29,7 @@ class _MyHomePageState extends State<HomePage> {
   int index = 0;
   bool selected = false;
   final screens = [
-    Calendar(),
+    EventEditingPage(),
     const TodoListPage(),
     listadoPage(),
     //Drawer(),

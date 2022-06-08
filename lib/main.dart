@@ -22,17 +22,29 @@ class MyApp extends StatelessWidget {
     return ChangeNotifierProvider(
       // ignore: unused_label
       create: (_) => ThemeChanger(ThemeData(
-        brightness: Brightness.light,
-        primaryColor: const Color(0xffe0607e),
-        accentColor: const Color(0xfff6c5af),
-        appBarTheme: const AppBarTheme(
-          backgroundColor: Color(0xffe0607e),
-        ),
-        checkboxTheme: CheckboxThemeData(
-          checkColor: MaterialStateProperty.all(const Color(0xffdbd3ad)),
-          fillColor: MaterialStateProperty.all(const Color(0xfff6c5af)),
-        ),
-      )),
+          brightness: Brightness.light,
+          primaryColor: const Color(0xffe0607e),
+          accentColor: const Color(0xfff6c5af),
+          appBarTheme: const AppBarTheme(
+            backgroundColor: Color(0xffe0607e),
+          ),
+          checkboxTheme: CheckboxThemeData(
+            checkColor: MaterialStateProperty.all(const Color(0xffdbd3ad)),
+            fillColor: MaterialStateProperty.all(const Color(0xfff6c5af)),
+          ),
+          focusColor: const Color(0xffe0607e),
+          hoverColor: const Color(0xffe0607e),
+          inputDecorationTheme: InputDecorationTheme(
+            enabledBorder: UnderlineInputBorder(
+              borderSide: BorderSide(
+                color: Color(0xffe0607e),
+                //focusColor: Color(0xffe0607e),
+              ),
+            ),
+            focusedBorder: UnderlineInputBorder(
+              borderSide: BorderSide(color: Color(0xffe0607e)),
+            ),
+          ))),
       child: MaterialAppWithTheme(),
     );
   }
@@ -49,11 +61,14 @@ class MaterialAppWithTheme extends StatelessWidget {
       initialRoute: HomePage.nombrePagina,
 
       routes: {
-        HomePage.nombrePagina: (BuildContext context) => HomePage(),
-        listadoPage.nombrePagina: (BuildContext context) => listadoPage(),
-        FormularioPage.nombrePagina: (BuildContext context) => FormularioPage(),
-        ContenidoPage.nombrePagina: (BuildContext context) => ContenidoPage(),
-        TodoListPage.nombrePagina: (BuildContext context) => TodoListPage(),
+        HomePage.nombrePagina: (BuildContext context) => const HomePage(),
+        listadoPage.nombrePagina: (BuildContext context) => const listadoPage(),
+        FormularioPage.nombrePagina: (BuildContext context) =>
+            const FormularioPage(),
+        ContenidoPage.nombrePagina: (BuildContext context) =>
+            const ContenidoPage(),
+        TodoListPage.nombrePagina: (BuildContext context) =>
+            const TodoListPage(),
         NewTodoPage.nombrePagina: (BuildContext context) => NewTodoPage()
 
         //pageTheme.nombrePagina:

@@ -2,6 +2,8 @@ import 'package:syncfusion_flutter_calendar/calendar.dart';
 import 'package:table_calendar/table_calendar.dart';
 import 'package:flutter/material.dart';
 
+import 'eventos/event_editing_page.dart';
+
 class Calendar extends StatefulWidget {
   static const nombrePagina = 'calendar';
   @override
@@ -30,14 +32,22 @@ class _CalendarState extends State<Calendar> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: SfCalendar(
+      /*body: SfCalendar(
         view: CalendarView.month,
+        initialDisplayDate: DateTime.now(),
+        cellBorderColor: Colors.transparent,
         todayHighlightColor: Colors.grey,
         headerHeight: 40,
-      ),
+      ),*/
 
+      /*body: CalendarWidget(),
+      floatingActionButtonAnimator: FloatingActionButton(
+          onPressed: () => Navigator.of(context).push(
+              MaterialPageRoute(builder: (context) => EventEditingPage())),
+          child: Icon(Icons.add)),
+*/
       /*
-      /*
+      
       appBar: AppBar(
         toolbarHeight: 55,
         title: const Text("Eventos"),
@@ -64,7 +74,7 @@ class _CalendarState extends State<Calendar> {
             ),
           ],
         ),
-      ),*/
+      ),
       floatingActionButton: FloatingActionButton(
         //backgroundColor: Colors.blueAccent,
         onPressed: _incrementCounter,
