@@ -27,6 +27,7 @@ class pageTheme extends StatelessWidget {
 
     return Scaffold(
       appBar: AppBar(
+        leading: CloseButton(),
         //backgroundColor: theme.setTheme(ThemeData.dark()),
         title: const Text('Tema'),
       ),

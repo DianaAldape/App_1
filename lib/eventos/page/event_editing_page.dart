@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_speed_dial/flutter_speed_dial.dart';
 import 'package:provider/provider.dart';
 
-import '../../utils.dart';
+import '../utils.dart';
 import '../model/event.dart';
 import '../provider/event_provider.dart';
 
@@ -53,27 +54,44 @@ class _EventEditingPageState extends State<EventEditingPage> {
 
   @override
   Widget build(BuildContext context) => Scaffold(
-        appBar: AppBar(
-          leading: CloseButton(),
-          actions: buildEditingActions(),
-        ),
-        body: SingleChildScrollView(
-          padding: EdgeInsets.all(12),
-          child: Form(
-            key: _formKey,
-            child: Column(
-              mainAxisSize: MainAxisSize.min,
-              children: <Widget>[
-                buildTitle(),
-                SizedBox(height: 12),
-                buildDateTimePickers(),
-                SizedBox(height: 12),
-                buildDescription(),
-              ],
-            ),
+      appBar: AppBar(
+        //leading: CloseButton(),
+        actions: buildEditingActions(),
+      ),
+      body: SingleChildScrollView(
+        padding: EdgeInsets.all(12),
+        child: Form(
+          key: _formKey,
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: <Widget>[
+              buildTitle(),
+              SizedBox(height: 12),
+              buildDateTimePickers(),
+              SizedBox(height: 12),
+              buildDescription(),
+            ],
           ),
         ),
-      );
+      ),
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
+      floatingActionButton: SpeedDial(
+          animatedIcon: AnimatedIcons.menu_close,
+          //backgroundColor: Colors.blueGrey,
+          overlayColor: Colors.black,
+          overlayOpacity: 0.2,
+          spacing: 20,
+          buttonSize: const Size(60, 60),
+          childrenButtonSize: const Size(58.0, 58.0),
+          spaceBetweenChildren: 18,
+          curve: Curves.bounceIn,
+          children: [
+            SpeedDialChild(
+              child: Icon(Icons.share),
+              //label: 'Editar',
+              onTap: () {},
+            ),
+          ]));
 
   List<Widget> buildEditingActions() => [
         ElevatedButton.icon(
@@ -82,8 +100,8 @@ class _EventEditingPageState extends State<EventEditingPage> {
             shadowColor: Colors.transparent,
           ),
           onPressed: saveForm,
-          icon: Icon(Icons.done),
-          label: Text('SAVE'),
+          icon: Icon(Icons.save, size: 35),
+          label: Text(''),
         ),
       ];
 

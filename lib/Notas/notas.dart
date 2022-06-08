@@ -16,13 +16,13 @@ class _listadoPageState extends State<listadoPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
+      /*appBar: AppBar(
         toolbarHeight: 55,
         toolbarOpacity: 0.6,
         title: Text("Notas"),
         elevation: 10,
         centerTitle: true,
-      ),
+      ),*/
       body: (NotasProvider().notas.isNotEmpty)
           ? ListView(children: _creatItem(context))
           : const Center(

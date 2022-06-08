@@ -5,14 +5,13 @@ import 'package:toggle_switch/toggle_switch.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'Notas/Notas.dart';
-import 'calendar.dart';
-import '/drawer/Settings.dart';
 import 'drawer/selectTheme.dart';
 import 'package:flutter_speed_dial/flutter_speed_dial.dart';
 import 'package:flutter_share/flutter_share.dart';
 
 import 'package:share/share.dart';
 
+import 'eventos/calendar.dart';
 import 'tareas/tasks.dart';
 
 class HomePage extends StatefulWidget {
@@ -54,6 +53,7 @@ class _MyHomePageState extends State<HomePage> {
         title: const Text("Logo"),
         elevation: 10,
         centerTitle: true,
+        //leading: CloseButton(),
       ),
       body: screens[index],
       bottomNavigationBar: Theme(
@@ -240,17 +240,6 @@ class _MyHomePageState extends State<HomePage> {
               onTap: () {
                 Share.share("URL de descarga de la aplicación");
               }),
-          ListTile(
-            title: const Text("Configuración"),
-            leading: const Icon(Icons.settings),
-            onTap: () {
-              Navigator.pop(context);
-              Navigator.push(
-                context,
-                MaterialPageRoute(builder: (context) => Settings()),
-              );
-            },
-          ),
         ],
       ),
     );

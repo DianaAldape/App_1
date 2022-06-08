@@ -103,7 +103,7 @@ class _FormularioPageState extends State<FormularioPage> {
             if (idForm.currentState!.validate()) {
               idForm.currentState?.save();
               //nuevaNota['estado'] = false;
-              Navigator.popAndPushNamed(context, listadoPage.nombrePagina);
+              Navigator.popAndPushNamed(context, HomePage.nombrePagina);
 
               if (nota != null) {
                 NotasProvider().editarNota(nuevaNota, nota);

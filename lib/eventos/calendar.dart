@@ -2,8 +2,8 @@ import 'package:syncfusion_flutter_calendar/calendar.dart';
 import 'package:table_calendar/table_calendar.dart';
 import 'package:flutter/material.dart';
 
-import 'eventos/page/event_editing_page.dart';
-import 'eventos/widget/calendar_widget.dart';
+import 'page/event_editing_page.dart';
+import 'widget/calendar_widget.dart';
 
 class Calendar extends StatelessWidget {
   Calendar({Key? key}) : super(key: key);

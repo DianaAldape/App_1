@@ -21,15 +21,17 @@ class _TasksWidgetState extends State<TasksWidget> {
     if (selectedEvents.isEmpty) {
       return Center(
         child: Text(
-          'No Events found!',
-          style: TextStyle(color: Colors.black, fontSize: 24),
+          'No se encontraron eventos!',
+          style: TextStyle(fontSize: 18),
         ),
       );
     }
 
     return SfCalendarTheme(
       data: SfCalendarThemeData(
-        timeTextStyle: TextStyle(fontSize: 16, color: Colors.black),
+        timeTextStyle: TextStyle(
+          fontSize: 16,
+        ),
       ),
       child: SfCalendar(
         view: CalendarView.timelineDay,
@@ -37,7 +39,7 @@ class _TasksWidgetState extends State<TasksWidget> {
         initialDisplayDate: provider.selectedDate,
         appointmentBuilder: appointmentBuilder,
         headerHeight: 0,
-        todayHighlightColor: Colors.black,
+        //todayHighlightColor: Colors.black,
         selectionDecoration: BoxDecoration(
           color: Colors.transparent,
         ),

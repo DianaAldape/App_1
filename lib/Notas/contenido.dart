@@ -22,51 +22,9 @@ class ContenidoPage extends StatelessWidget {
 
     return Scaffold(
       appBar: AppBar(
-        title: Text("${nota['titulo']}"),
-      ),
-      //
-      floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
-      floatingActionButton: SpeedDial(
-        animatedIcon: AnimatedIcons.menu_close,
-        activeBackgroundColor: Colors.red,
-        activeForegroundColor: Colors.red,
-        //backgroundColor: Colors.blueGrey,
-        overlayColor: Colors.black,
-        overlayOpacity: 0.2,
-        spacing: 20,
-        buttonSize: const Size(60, 60),
-        childrenButtonSize: const Size(58.0, 58.0),
-        spaceBetweenChildren: 18,
-        curve: Curves.bounceIn,
-        children: [
-          SpeedDialChild(
-              child: Icon(Icons.delete_forever),
-              //label: 'Eliminar',
-              onTap: () {
-                try {
-                  NotasProvider().eliminarNota(nota);
-                  Navigator.popAndPushNamed(context, listadoPage.nombrePagina);
-                } catch (e) {
-                  print(e);
-                }
-              }),
-          SpeedDialChild(
-            child: Icon(Icons.edit),
-            //label: 'Editar',
-            onTap: () {
-              Navigator.pushNamed(context, FormularioPage.nombrePagina,
-                  arguments: nota);
-            },
-            //onTap: () => showToast('Selected'),
-          ),
-          SpeedDialChild(
-            child: Icon(Icons.share),
-            //label: 'Editar',
-            onTap: () {
-              Share.share("${nota['contenido']}");
-            },
-          ),
-        ],
+        //leading: CloseButton(),
+        actions: buildViewingActions(context, nota),
+        //title: Text("${nota['titulo']}"),
       ),
       body: Padding(
           padding: const EdgeInsets.all(20),
@@ -74,26 +32,44 @@ class ContenidoPage extends StatelessWidget {
             //mainAxisAlignment: MainAxisAlignment.start,
             crossAxisAlignment: CrossAxisAlignment.start,
             //textDirection: TextDirection.rtl,
-
             children: <Widget>[
+              Text("${nota['titulo']}",
+                  style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
+              SizedBox(height: 24),
+
               Text("${nota['contenido']}"),
               //),
-/*
-              RaisedButton(
-                onPressed: () => Navigator.pushNamed(
-                    context, FormularioPage.nombrePagina,
-                    arguments: nota),
-                child: const Text("Editar"),
-              ),
-              RaisedButton(
-                onPressed: () {
-                  NotasProvider().eliminarNota(nota);
-                  Navigator.popAndPushNamed(context, HomePage.nombrePagina);
-                },
-                child: const Text("Borrar"),
-              ),*/
             ],
           )),
     );
   }
+
+  List<Widget> buildViewingActions(
+          BuildContext context, Map<String, dynamic> nota) =>
+      [
+        IconButton(
+          icon: Icon(Icons.share),
+          onPressed: () {
+            Share.share("${nota['titulo']}"),
+          },
+        ),
+        IconButton(
+          icon: Icon(Icons.edit),
+          onPressed: () => {
+            Navigator.pushNamed(context, FormularioPage.nombrePagina,
+                arguments: nota),
+          },
+        ),
+        IconButton(
+          icon: Icon(Icons.delete),
+          onPressed: () {
+            try {
+              NotasProvider().eliminarNota(nota);
+              Navigator.popAndPushNamed(context, HomePage.nombrePagina);
+            } catch (e) {
+              print(e);
+            }
+          },
+        ),
+      ];
 }

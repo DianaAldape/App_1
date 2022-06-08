@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-import '../../utils.dart';
 import '../model/event.dart';
 import '../provider/event_provider.dart';
+import '../utils.dart';
 import 'event_editing_page.dart';
 
 class EventViewingPage extends StatelessWidget {
