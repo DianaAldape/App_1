@@ -32,7 +32,7 @@ class EventViewingPage extends StatelessWidget {
             const SizedBox(height: 24),
             Text(
               event.description,
-              style: TextStyle(color: Colors.white),
+              //style: TextStyle(color: Colors.white
             ),
           ],
         ),

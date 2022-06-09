@@ -54,44 +54,27 @@ class _EventEditingPageState extends State<EventEditingPage> {
 
   @override
   Widget build(BuildContext context) => Scaffold(
-      appBar: AppBar(
-        //leading: CloseButton(),
-        actions: buildEditingActions(),
-      ),
-      body: SingleChildScrollView(
-        padding: EdgeInsets.all(12),
-        child: Form(
-          key: _formKey,
-          child: Column(
-            mainAxisSize: MainAxisSize.min,
-            children: <Widget>[
-              buildTitle(),
-              SizedBox(height: 12),
-              buildDateTimePickers(),
-              SizedBox(height: 12),
-              buildDescription(),
-            ],
+        appBar: AppBar(
+          //leading: CloseButton(),
+          actions: buildEditingActions(),
+        ),
+        body: SingleChildScrollView(
+          padding: EdgeInsets.all(12),
+          child: Form(
+            key: _formKey,
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              children: <Widget>[
+                buildTitle(),
+                SizedBox(height: 12),
+                buildDateTimePickers(),
+                SizedBox(height: 12),
+                buildDescription(),
+              ],
+            ),
           ),
         ),
-      ),
-      floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
-      floatingActionButton: SpeedDial(
-          animatedIcon: AnimatedIcons.menu_close,
-          //backgroundColor: Colors.blueGrey,
-          overlayColor: Colors.black,
-          overlayOpacity: 0.2,
-          spacing: 20,
-          buttonSize: const Size(60, 60),
-          childrenButtonSize: const Size(58.0, 58.0),
-          spaceBetweenChildren: 18,
-          curve: Curves.bounceIn,
-          children: [
-            SpeedDialChild(
-              child: Icon(Icons.share),
-              //label: 'Editar',
-              onTap: () {},
-            ),
-          ]));
+      );
 
   List<Widget> buildEditingActions() => [
         ElevatedButton.icon(
@@ -106,6 +89,7 @@ class _EventEditingPageState extends State<EventEditingPage> {
       ];
 
   Widget buildTitle() => TextFormField(
+        textCapitalization: TextCapitalization.sentences,
         //style: TextStyle(fontSize: 15),
         decoration: InputDecoration(
           border: UnderlineInputBorder(),
@@ -118,6 +102,7 @@ class _EventEditingPageState extends State<EventEditingPage> {
       );
 
   Widget buildDescription() => TextFormField(
+        textCapitalization: TextCapitalization.sentences,
         decoration: InputDecoration(
           border: OutlineInputBorder(),
           hintText: 'Detalles',

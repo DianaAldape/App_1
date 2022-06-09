@@ -6,34 +6,59 @@ class NotasProvider {
   NotasProvider._privado() {
     _notas = [
       {
-        'titulo': "Flutter",
-        'contenido': "Que onda con el modo null safety",
+        'titulo': "Servidor Linux",
+        'contenido': "Usuario: daldape\nContraseña: daldape321",
         'fecha': DateTime.now(),
       },
       {
-        'titulo': "App compu",
+        'titulo': "Empresas (investigar)",
+        'contenido': "- Vitalmex\n- Dalsitek",
+        'fecha': DateTime.now(),
+      },
+      {
+        'titulo': "Calificaciones Semestre 2022-2",
         'contenido':
-            "Me falta: \n Calendario\nAcomodar botones de tareas y notas",
+            "- Robots Moviles : 9\n- Micros : 10\n- Admin. TIC : ?\n- Computo Móvil : ? ",
         'fecha': DateTime.now(),
       },
       {
-        'titulo': "Prueba 3",
-        'contenido': "Contenido de nota 3",
-        'fecha': DateTime.now(),
-      },
-      {
-        'titulo': "Prueba 4",
-        'contenido': "Prueba de nota para editar",
+        'titulo': "Prueba 1",
+        'contenido': "Se realizo esta prueba para editar y eliminar",
         'fecha': DateTime.now(),
       },
       {
         'titulo': "Borrar",
-        'contenido': "Nota de prueba para borrar ",
+        'contenido': "Otras nota de prueba para borrar ",
         'fecha': DateTime.now(),
       },
       {
         'titulo': "Tarea Servicio",
-        'contenido': "Reproducir codigo\nAcomodar Git\netc",
+        'contenido': "- Reproducir codigo\n- Acomodar Git\n- ...",
+        'fecha': DateTime.now(),
+      },
+      {
+        'titulo': "Prueba 2",
+        'contenido': "Se realizo esta otra prueba para editar y eliminar",
+        'fecha': DateTime.now(),
+      },
+      {
+        'titulo': "Lista Super",
+        'contenido': "- Leche\n- Crema\n- Pan",
+        'fecha': DateTime.now(),
+      },
+      {
+        'titulo': "Canciones",
+        'contenido': "  ",
+        'fecha': DateTime.now(),
+      },
+      {
+        'titulo': "Peliculas",
+        'contenido': "  ",
+        'fecha': DateTime.now(),
+      },
+      {
+        'titulo': "Prueba",
+        'contenido': "Esto es una prueba",
         'fecha': DateTime.now(),
       },
     ];
