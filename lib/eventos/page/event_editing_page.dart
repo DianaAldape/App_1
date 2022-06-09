@@ -136,7 +136,7 @@ class _EventEditingPageState extends State<EventEditingPage> {
             controlAffinity: ListTileControlAffinity.leading,
             title: Text('Todo el día'),
             value: isAllDay,
-            activeColor: Theme.of(context).primaryColor,
+            //activeColor: Theme.of(context).primaryColor,
             onChanged: (value) => setState(() => isAllDay = value!),
           )
         ],

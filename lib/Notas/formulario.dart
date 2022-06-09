@@ -68,6 +68,7 @@ class _FormularioPageState extends State<FormularioPage> {
       textCapitalization: TextCapitalization.sentences,
       onSaved: (valor) {
         nuevaNota['titulo'] = valor;
+
         nuevaNota['fecha'] = DateTime.now();
       },
       decoration: const InputDecoration(hintText: "Titulo"),

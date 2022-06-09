@@ -51,8 +51,11 @@ class MyApp extends StatelessWidget {
           progressIndicatorTheme: ProgressIndicatorThemeData(
             color: Colors.grey,
           ),
-          colorScheme:
-              ColorScheme.fromSwatch().copyWith(secondary: Color(0xfff6c5af)))),
+          colorScheme: ColorScheme.fromSwatch().copyWith(
+            secondary: Color(0xfff6c5af),
+            primary: Color(0xffe0607e),
+            primaryContainer: Colors.grey,
+          ))),
       child: MaterialAppWithTheme(),
     );
 /*

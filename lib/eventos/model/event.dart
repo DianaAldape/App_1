@@ -13,7 +13,7 @@ class Event {
     required this.description,
     required this.from,
     required this.to,
-    this.backgroundColor = Colors.lightGreen,
+    this.backgroundColor = const Color.fromARGB(255, 229, 224, 90),
     this.isAllDay = false,
   });
 }
